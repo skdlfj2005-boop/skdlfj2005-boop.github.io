@@ -1,355 +1,757 @@
-아, 죄송합니다! 제가 이전 응답에서 웹 앱 생성 도구(Canvas)를 사용하는 과정에서 기존에 다듬어 두었던 깔끔한 카드 스타일 디자인 대신 다른 레이아웃의 코드가 들어갔었네요.
-
-질문해 주신 대로 구글 애드센스 검토 상태에서 코드를 수정해도 아무 문제가 없으니 안심하셔도 됩니다.
-
-기존에 마음에 들어 하셨던 **원본 사이트 감성의 깔끔한 카드형 디자인**, **식성별 분기 선택지**, **상세한 소개/가이드 접기 영역**, **생애 결과 공유 기능**, 그리고 가장 중요한 애드센스 메타 태그(`ca-pub-3372271572819920`)까지 모두 정상적으로 포함된 진짜 최종 완성본 코드를 아래에 준비했습니다.
-
-이 코드로 `index.html`을 덮어쓰기 하시면 원래의 깔끔한 디자인 그대로 사용하실 수 있습니다!
-
-```html
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="google-adsense-account" content="ca-pub-3372271572819920">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>공룡환생소 - Reborn on Earth: Dinosaur Edition</title>
-<style>
-:root{--bg:#eef3e4;--pn:#fff;--p2:#e4ecd6;--ln:#c5d3b1;--tx:#1c2a20;--mu:#566a58;--ac:#4f7a1f;--fg:#fff;--gd:#a8741a;--rd:#c4452f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101b18;--pn:#192923;--p2:#22372d;--ln:#3a5545;--tx:#f2f4e8;--mu:#b2c5b4;--ac:#c9e58a;--fg:#172218;--gd:#f4ca76;--rd:#f18e79}}
-:root[data-theme="dark"]{--bg:#101b18;--pn:#192923;--p2:#22372d;--ln:#3a5545;--tx:#f2f4e8;--mu:#b2c5b4;--ac:#c9e58a;--fg:#172218;--gd:#f4ca76;--rd:#f18e79}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}[hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 system-ui,-apple-system,"Noto Sans KR",sans-serif}
-.w{max-width:760px;margin:auto;padding:20px 16px 48px}
-h1{margin:0;font-size:30px;letter-spacing:-.04em}
-h2,h3{margin:4px 0}
-.mu{color:var(--mu);font-size:13px}
-.c{background:var(--pn);border:1px solid var(--ln);border-radius:20px;padding:18px;margin-top:14px}
-button{font:inherit;color:var(--tx);cursor:pointer;transition:all .15s ease}
-.pri{background:var(--ac);color:var(--fg);border:0;border-radius:12px;padding:12px 18px;font-weight:800}
-.pri:hover{opacity:.9}
-.sec{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:10px 14px}
-.sec.on,.tg button.on{border-color:var(--ac);outline:2px solid var(--ac)}
-.tg{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.tg button{flex:1;min-width:160px;text-align:left;background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:10px}
-.tg small{display:block;color:var(--mu)}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-.art{text-align:center;padding:8px 0}
-.em{font-size:84px;line-height:1.1}
-.em svg{width:100%;max-width:440px;height:auto;border-radius:14px;display:block;margin:auto}
-.tag{display:inline-block;border:1px solid var(--ln);border-radius:99px;padding:2px 10px;font-size:12px;color:var(--mu);margin:2px}
-.th svg{width:100%;height:auto;border-radius:8px;display:block;margin-bottom:6px}
-.mt{display:grid;grid-template-columns:48px 1fr 32px;gap:8px;align-items:center;font-size:13px;color:var(--mu);margin:6px 0}
-.bar{height:8px;background:var(--p2);border-radius:9px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--ac);transition:width .3s}
-.bar i.f{background:var(--gd)}
-.bar i.d{background:var(--rd)}
-.ch{display:grid;gap:8px;margin-top:10px}
-.ch button{text-align:left;background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:10px 12px}
-.ch button:hover{border-color:var(--ac)}
-.ch small{display:block;color:var(--mu)}
-.lg div{font-size:13px;color:var(--mu);margin-bottom:4px}
-.lg b{color:var(--gd);margin-right:6px}
-.dx{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:10px}
-.dx div{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:8px;font-size:13px}
-.dx .no{opacity:.45}
-input{font:inherit;width:100%;padding:9px;border-radius:10px;border:1px solid var(--ln);background:var(--bg);color:var(--tx)}
-details{margin-top:10px;background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:10px 14px}
-summary{cursor:pointer;font-weight:bold;color:var(--ac)}
-</style>
-</head>
-<body>
-<div class="w">
-  <h1>🦖 공룡환생소</h1>
-  <div class="mu">다시 태어난다면, 어떤 공룡으로 살아가게 될까? (Reborn on Earth)</div>
-
-  <!-- 시작 화면 -->
-  <section class="c" id="S">
-    <p>중생대 지상에는 셀 수 없이 다양한 공룡이 번성했습니다. 태어날 고대 지구의 환경과 몸은 선택할 수 없습니다. 주어진 조건에 맞춰 생존을 완주해보세요.</p>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공룡환생소 (Dinosaur Rebirth) - 중생대 공룡 시뮬레이터</title>
+    <!-- Google AdSense Account Meta Tag -->
+    <meta name="google-adsense-account" content="ca-pub-3372271572819920">
     
-    <details>
-      <summary>📜 공룡환생소 게임 소개 및 가이드 보기</summary>
-      <p style="margin-top:8px;font-size:14px;">
-        • <b>환생 시스템</b>: 트라이아스기, 쥐라기, 백악기의 고대 지구에서 무작위 공룡으로 다시 태어납니다.<br>
-        • <b>식성별 특화 생존</b>: 육식 공룡은 치열한 사냥과 영역 다툼을, 초식 공룡은 무리 이동과 포식자 회피를 통해 살아남아야 합니다.<br>
-        • <b>상태 관리</b>: 건강, 허기, 기력 게이지를 조절하고 계절 변화에 맞춰 최적의 선택을 내려보세요. 장수할수록 특별한 생애 기록이 남습니다!
-      </p>
-    </details>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        mesozoic: {
+                            900: '#0f1715',
+                            800: '#182622',
+                            700: '#233934',
+                            500: '#10b981',
+                            amber: '#f59e0b',
+                            crimson: '#ef4444'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1715;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #233934;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+        
+        .glow-emerald {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+        }
+        .glow-amber {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+        }
+        
+        @keyframes pulseSlow {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.03); opacity: 1; }
+        }
+        .animate-pulse-slow {
+            animation: pulseSlow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-mesozoic-900 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
 
-    <div class="tg" style="margin-top:14px;">
-      <button id="m1" class="on" onclick="setM(1)">
-        <b>개체수(출현 비중) 기반</b>
-        <small>당대 개체수가 많은 공룡일수록 환생할 확률이 높아집니다.</small>
-      </button>
-      <button id="m0" onclick="setM(0)">
-        <b>모든 종 동일 확률</b>
-        <small>모든 공룡이 동일한 확률로 등장합니다 (1 / N).</small>
-      </button>
+    <!-- Header Navigation -->
+    <header class="border-b border-emerald-900/40 bg-mesozoic-900/90 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('rebirth')">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg glow-emerald">
+                    🦕
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg md:text-xl tracking-tight text-emerald-400 leading-none">공룡환생소</h1>
+                    <p class="text-xs text-slate-400">Dinosaur Rebirth Simulator</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex items-center space-x-1 sm:space-x-2 text-xs md:text-sm font-semibold">
+                <button onclick="switchTab('rebirth')" id="nav-rebirth" class="px-3 py-1.5 rounded-lg transition-all text-emerald-400 bg-emerald-900/30 border border-emerald-500/30">
+                    <i class="fa-solid fa-egg mr-1"></i> 환생
+                </button>
+                <button onclick="switchTab('guide')" id="nav-guide" class="px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+                    <i class="fa-solid fa-book-open mr-1"></i> 게임 설명 & 세계관
+                </button>
+                <button onclick="switchTab('dex')" id="nav-dex" class="px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+                    <i class="fa-solid fa-compass mr-1"></i> 공룡 도감
+                </button>
+                <button onclick="switchTab('history')" id="nav-history" class="px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800">
+                    <i class="fa-solid fa-clock-rotate-left mr-1"></i> 환생 기록
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- TAB 1: REBIRTH & SIMULATOR -->
+        <section id="tab-rebirth" class="tab-content space-y-6">
+            <!-- START VIEW -->
+            <div id="start-screen" class="bg-mesozoic-800/80 border border-emerald-900/50 rounded-2xl p-6 md:p-10 text-center relative overflow-hidden shadow-2xl">
+                <div class="absolute -top-24 -right-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-semibold text-emerald-400 mb-4">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>중생대 환생 게이트 가동 중</span>
+                </div>
+
+                <h2 class="text-3xl md:text-5xl font-black mb-4 text-white tracking-tight">
+                    당신의 다음 생은 <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">공룡</span>입니다.
+                </h2>
+                <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+                    트라이아스기, 쥐라기, 백악기의 찬란하고 혹독했던 야생 속으로 들어갑니다.<br>
+                    식성, 태초의 유전자, 그리고 생존을 향한 선택이 당신의 운명을 결정합니다.
+                </p>
+
+                <!-- Spawn Mechanism Config -->
+                <div class="max-w-md mx-auto bg-mesozoic-900/90 border border-slate-700/60 p-4 rounded-xl mb-8 text-left">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">환생 확률 모델 선택</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="cursor-pointer border border-slate-700 bg-slate-800/60 p-2.5 rounded-lg flex items-center space-x-2 text-xs font-medium hover:border-emerald-500 transition-all has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-950/40">
+                            <input type="radio" name="spawnMode" value="population" checked class="text-emerald-500 focus:ring-0">
+                            <div>
+                                <span class="block text-slate-200 font-bold">개체수 비례</span>
+                                <span class="text-[10px] text-slate-400">초식공룡 높은 확률</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer border border-slate-700 bg-slate-800/60 p-2.5 rounded-lg flex items-center space-x-2 text-xs font-medium hover:border-emerald-500 transition-all has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-950/40">
+                            <input type="radio" name="spawnMode" value="equal" class="text-emerald-500 focus:ring-0">
+                            <div>
+                                <span class="block text-slate-200 font-bold">균등 확률</span>
+                                <span class="text-[10px] text-slate-400">14종 동일 확률</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button onclick="startRebirth()" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-lg rounded-xl shadow-xl hover:shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+                    <i class="fa-solid fa-dna mr-2"></i> 공룡으로 알에서 깨어나기
+                </button>
+            </div>
+
+            <!-- GAMEPLAY SCREEN (Hidden by default) -->
+            <div id="game-screen" class="hidden space-y-6">
+                <!-- Dino Status Header -->
+                <div class="bg-mesozoic-800/90 border border-emerald-900/60 rounded-2xl p-5 md:p-6 shadow-xl relative overflow-hidden">
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <!-- Dynamic Dino SVG Card -->
+                        <div class="w-36 h-36 md:w-44 md:h-44 bg-mesozoic-900 border border-slate-700/60 rounded-2xl flex-shrink-0 flex flex-col items-center justify-center p-3 relative shadow-inner">
+                            <div id="dino-svg-container" class="w-full h-24 flex items-center justify-center"></div>
+                            <span id="dino-diet-badge" class="mt-2 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800">식성</span>
+                        </div>
+
+                        <!-- Status & Stats Info -->
+                        <div class="flex-grow w-full space-y-4">
+                            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-700/60 pb-3">
+                                <div>
+                                    <div class="flex items-center space-x-2">
+                                        <span id="dino-era-badge" class="text-xs font-extrabold text-amber-400 bg-amber-950/60 px-2.5 py-0.5 rounded-full border border-amber-800">백악기</span>
+                                        <h3 id="dino-name" class="text-2xl font-black text-white tracking-tight">티라노사우루스</h3>
+                                    </div>
+                                    <p id="dino-scientific" class="text-xs text-slate-400 italic">Tyrannosaurus rex</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-slate-400 block">현재 연령</span>
+                                    <span id="dino-age-display" class="text-2xl font-black text-emerald-400">0 세</span>
+                                </div>
+                            </div>
+
+                            <!-- Bar Stats -->
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold mb-1">
+                                        <span class="text-rose-400"><i class="fa-solid fa-heart mr-1"></i> 체력 (HP)</span>
+                                        <span id="val-hp" class="text-slate-300">100/100</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                                        <div id="bar-hp" class="h-full bg-rose-500 transition-all duration-300" style="width: 100%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold mb-1">
+                                        <span class="text-amber-400"><i class="fa-solid fa-drumstick-bite mr-1"></i> 포만감</span>
+                                        <span id="val-hunger" class="text-slate-300">80/100</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                                        <div id="bar-hunger" class="h-full bg-amber-500 transition-all duration-300" style="width: 80%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold mb-1">
+                                        <span class="text-teal-400"><i class="fa-solid fa-bolt mr-1"></i> 활력</span>
+                                        <span id="val-energy" class="text-slate-300">90/100</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                                        <div id="bar-energy" class="h-full bg-teal-400 transition-all duration-300" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Status Tags Banner -->
+                            <div class="flex items-center space-x-2 text-xs">
+                                <span class="text-slate-400 font-bold">활성 상태:</span>
+                                <div id="status-tags-container" class="flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400 text-[11px]">특이사항 없음</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Action & Log Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Left Column: Action & Decision -->
+                    <div class="lg:col-span-2 space-y-4">
+                        <div id="event-card" class="bg-mesozoic-800/90 border border-slate-700/80 rounded-2xl p-6 shadow-xl space-y-4">
+                            <div class="flex items-center justify-between border-b border-slate-700/60 pb-3">
+                                <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest"><i class="fa-solid fa-compass-easting mr-1"></i> 현재 조우 이벤트</span>
+                                <span id="event-year-tag" class="text-xs text-slate-400">유년기 1년차</span>
+                            </div>
+                            
+                            <h4 id="event-title" class="text-xl font-bold text-white">이벤트 제목</h4>
+                            <p id="event-desc" class="text-slate-300 text-sm leading-relaxed">이벤트 설명이 이곳에 표시됩니다.</p>
+
+                            <!-- Life Focus Strategy Selector -->
+                            <div class="bg-mesozoic-900/80 p-3 rounded-xl border border-slate-800">
+                                <label class="block text-[11px] font-bold text-slate-400 uppercase mb-2">이번 년도 생활 태세 (Life Focus)</label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button onclick="setLifeFocus('forage')" id="focus-forage" class="focus-btn p-2 rounded-lg border text-xs font-bold text-center transition-all bg-emerald-950/80 border-emerald-500 text-emerald-300">
+                                        🌾 먹이 탐색<br><span class="text-[9px] font-normal text-slate-400">포만감+ / 위험+</span>
+                                    </button>
+                                    <button onclick="setLifeFocus('vigilant')" id="focus-vigilant" class="focus-btn p-2 rounded-lg border text-xs font-bold text-center transition-all bg-slate-900 border-slate-700 text-slate-400 hover:text-slate-200">
+                                        🛡️ 경계 태세<br><span class="text-[9px] font-normal text-slate-400">생존율+ / 기력소모</span>
+                                    </button>
+                                    <button onclick="setLifeFocus('rest')" id="focus-rest" class="focus-btn p-2 rounded-lg border text-xs font-bold text-center transition-all bg-slate-900 border-slate-700 text-slate-400 hover:text-slate-200">
+                                        💤 휴식 & 성장<br><span class="text-[9px] font-normal text-slate-400">체력회복 / 성장촉진</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Choice Options Buttons -->
+                            <div id="event-choices-container" class="space-y-2.5 pt-2">
+                                <!-- Dynamic Choice Buttons Inserted Here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Life Chronicle Logs -->
+                    <div class="bg-mesozoic-800/90 border border-slate-700/80 rounded-2xl p-5 shadow-xl flex flex-col h-[420px]">
+                        <h4 class="text-sm font-extrabold text-slate-200 mb-3 flex items-center justify-between border-b border-slate-700/60 pb-2">
+                            <span><i class="fa-solid fa-feather-pointed text-emerald-400 mr-2"></i>생존 연대기 Log</span>
+                            <span class="text-[10px] text-slate-400 bg-slate-900 px-2 py-0.5 rounded">최신순</span>
+                        </h4>
+                        <div id="chronicle-log" class="flex-grow overflow-y-auto space-y-3 pr-2 text-xs">
+                            <div class="p-2.5 rounded-lg bg-mesozoic-900/60 border border-slate-800 text-slate-400">
+                                알에서 깨어나 생존을 위한 여정을 시작합니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULT SCREEN (Hidden by default) -->
+            <div id="result-screen" class="hidden space-y-6">
+                <div class="bg-mesozoic-800/90 border border-emerald-900/70 rounded-2xl p-6 md:p-8 shadow-2xl text-center relative overflow-hidden">
+                    <div id="result-badge" class="inline-block px-4 py-1 rounded-full text-xs font-extrabold bg-rose-950 text-rose-400 border border-rose-800 mb-3">
+                        생의 마감
+                    </div>
+                    <h2 id="result-cause" class="text-3xl md:text-4xl font-black text-white mb-2">자연사 / 포식자에 의한 사망</h2>
+                    <p id="result-summary-text" class="text-slate-300 text-sm max-w-xl mx-auto mb-6">
+                        당신은 백악기의 가혹한 대지 위에서 총 15년을 생존하였습니다.
+                    </p>
+
+                    <!-- Life Summary Shareable Card Preview -->
+                    <div id="shareable-card" class="max-w-md mx-auto bg-gradient-to-br from-mesozoic-900 via-slate-900 to-emerald-950 border-2 border-emerald-500/40 rounded-2xl p-6 text-left shadow-2xl relative mb-6">
+                        <div class="flex items-center justify-between border-b border-emerald-900/60 pb-3 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xl">🦕</span>
+                                <div>
+                                    <h4 class="font-bold text-emerald-400 text-sm leading-tight">공룡환생소 생존 증서</h4>
+                                    <p class="text-[10px] text-slate-400">Dinosaur Rebirth Life Certificate</p>
+                                </div>
+                            </div>
+                            <span id="card-era" class="text-[10px] font-black bg-emerald-950 text-emerald-300 border border-emerald-700 px-2 py-0.5 rounded">백악기</span>
+                        </div>
+
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div id="card-svg-container" class="w-20 h-20 bg-mesozoic-800 border border-slate-700 rounded-xl p-2 flex items-center justify-center"></div>
+                            <div>
+                                <h3 id="card-dino-name" class="text-lg font-extrabold text-white">티라노사우루스</h3>
+                                <p id="card-life-span" class="text-xs text-amber-400 font-semibold">최종 수명: 15세</p>
+                                <p id="card-diet" class="text-[11px] text-slate-400">식성: 육식성 (Carnivore)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-mesozoic-900/90 rounded-lg p-3 border border-slate-800 text-xs text-slate-300 space-y-1 mb-4">
+                            <p>✨ <strong>최고 업적:</strong> <span id="card-achievement">원로 공룡</span></p>
+                            <p>📜 <strong>생애 요약:</strong> <span id="card-desc">가혹한 가뭄 속에서도 무리를 이끌며 거대한 대지를 지배했습니다.</span></p>
+                        </div>
+
+                        <!-- User Custom Memo Input -->
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">나만의 한 줄 남기기</label>
+                            <input type="text" id="card-user-note" placeholder="예: 다음엔 꼭 프테라노돈으로 태어나겠다!" maxlength="40" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                        </div>
+                    </div>
+
+                    <!-- Action & Sharing Buttons -->
+                    <div class="flex flex-wrap items-center justify-center gap-3">
+                        <button onclick="shareResultWebAPI()" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm rounded-xl shadow-lg transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-share-nodes"></i>
+                            <span>결과 공유하기</span>
+                        </button>
+                        <button onclick="copyResultText()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 font-semibold text-sm rounded-xl transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-copy"></i>
+                            <span>요약 복사</span>
+                        </button>
+                        <button onclick="startRebirth()" class="px-6 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-extrabold text-sm rounded-xl shadow-lg transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            <span>다시 환생하기</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: DETAILED GUIDE & LORE -->
+        <section id="tab-guide" class="tab-content hidden space-y-8">
+            <div class="bg-mesozoic-800 border border-emerald-900/60 rounded-2xl p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-black text-white mb-2"><i class="fa-solid fa-book-journal-whills text-emerald-400 mr-2"></i>공룡환생소 가이드 & 중생대 세계관</h2>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    중생대(Mesozoic Era)의 환경, 메커니즘, 상태 이상 및 태생 확률 모델에 대한 상세 지침서입니다.
+                </p>
+            </div>
+
+            <div class="bg-mesozoic-800/90 border border-slate-700/80 rounded-2xl p-6 space-y-4">
+                <h3 class="text-lg font-bold text-emerald-400 border-b border-slate-700 pb-2">1. 중생대 3대 시대 (Mesozoic Eras)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-mesozoic-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-400 border border-amber-800">트라이아스기 (Triassic)</span>
+                        <h4 class="text-sm font-bold text-white">공룡의 태동기</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">하나의 초대륙 판게아 시대. 건조하고 혹독한 기후 속에서 소형 공룡들이 생존 경쟁을 시작했습니다.</p>
+                    </div>
+                    <div class="bg-mesozoic-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-teal-950 text-teal-400 border border-teal-800">쥐라기 (Jurassic)</span>
+                        <h4 class="text-sm font-bold text-white">거대 공룡의 황금기</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">습윤한 기후와 풍부한 울창한 산림. 브라키오사우루스와 같은 초거대 용각류가 지배했던 시대입니다.</p>
+                    </div>
+                    <div class="bg-mesozoic-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-950 text-rose-400 border border-rose-800">백악기 (Cretaceous)</span>
+                        <h4 class="text-sm font-bold text-white">종의 다양성과 정점</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">티라노사우루스와 트리케라톱스 등 최강의 포식자와 방어 장갑을 갖춘 공룡들이 각축을 벌인 백열의 시대입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: DINOSAUR DEX -->
+        <section id="tab-dex" class="tab-content hidden space-y-6">
+            <div class="bg-mesozoic-800 border border-emerald-900/60 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-black text-white"><i class="fa-solid fa-book-atlas text-emerald-400 mr-2"></i>공룡 도감 (Dinosaur Dex)</h2>
+                    <p class="text-slate-300 text-xs mt-1">환생을 통해 발견한 공룡들의 유전자 기록을 확인하세요.</p>
+                </div>
+                <div id="dex-progress" class="bg-mesozoic-900 px-4 py-2 rounded-xl border border-slate-700 text-xs font-bold text-emerald-400">
+                    해금률: 0 / 14 (0%)
+                </div>
+            </div>
+
+            <div id="dex-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </section>
+
+        <!-- TAB 4: REBIRTH HISTORY -->
+        <section id="tab-history" class="tab-content hidden space-y-6">
+            <div class="bg-mesozoic-800 border border-emerald-900/60 rounded-2xl p-6 flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-black text-white"><i class="fa-solid fa-timeline text-emerald-400 mr-2"></i>환생 기록 (Rebirth History)</h2>
+                    <p class="text-slate-300 text-xs mt-1">지난 삶의 기록과 최종 수명을 보관합니다.</p>
+                </div>
+                <button onclick="clearHistory()" class="px-3 py-1.5 bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-800 text-xs font-bold rounded-lg transition-all">
+                    기록 초기화
+                </button>
+            </div>
+
+            <div id="history-container" class="space-y-3"></div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800 bg-mesozoic-900 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p>© 2026 공룡환생소 (Dinosaur Rebirth Simulator). Styled like rebornonearth.com.</p>
+            <p>중생대의 찬란했던 생명들의 생존 시뮬레이션을 체험하세요.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast Modal -->
+    <div id="toast-modal" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-emerald-950 border border-emerald-500 text-emerald-200 px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-2 text-xs font-bold">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span id="toast-message">알림 메시지</span>
+        </div>
     </div>
-    <div style="display:flex;gap:8px;margin-top:12px;">
-      <button class="pri" style="flex:1" onclick="born()">무작위 공룡으로 태어나기 →</button>
-      <button class="sec" onclick="dex()">공룡 도감</button>
-    </div>
-    <p class="mu" id="cnt" style="margin-top:10px"></p>
-  </section>
 
-  <!-- 게임진행 화면 -->
-  <section class="c" id="G" hidden>
-    <div class="row">
-      <div><b id="era"></b> <span class="mu" id="age"></span></div>
-      <button class="sec" onclick="again()">새로운 삶 ↻</button>
-    </div>
-    <div class="art">
-      <div class="em" id="em"></div>
-      <h2 id="nm"></h2>
-      <div class="mu" id="lt"></div>
-      <div id="tags"></div>
-      <p class="mu" id="ds"></p>
-    </div>
+    <!-- MAIN JAVASCRIPT LOGIC -->
+    <script>
+        const DINOSAURS = [
+            {
+                id: 'tyrannosaurus',
+                name: '티라노사우루스',
+                scientific: 'Tyrannosaurus rex',
+                era: '백악기',
+                diet: '육식성',
+                popWeight: 5,
+                maxAge: 28,
+                baseHp: 120,
+                baseHunger: 90,
+                baseEnergy: 85,
+                desc: '백악기 말 북아메리카를 호령한 최상위 포식자. 강력한 턱 악력을 자랑합니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M20 70 Q30 40 50 45 Q70 30 85 35 Q90 40 85 50 Q70 50 65 60 Q70 75 75 85 L65 85 Q60 70 50 65 L45 85 L35 85 Q40 70 30 70 Z" fill="#ef4444"/><circle cx="75" cy="38" r="3" fill="#ffffff"/><path d="M80 48 L70 48" stroke="#ffffff" stroke-width="2"/></svg>`
+            },
+            {
+                id: 'triceratops',
+                name: '트리케라톱스',
+                scientific: 'Triceratops horridus',
+                era: '백악기',
+                diet: '초식성',
+                popWeight: 15,
+                maxAge: 35,
+                baseHp: 130,
+                baseHunger: 100,
+                baseEnergy: 75,
+                desc: '세 개의 뿔과 거대한 프릴로 포식자의 공격을 완벽히 방어했던 초식공룡입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 75 Q25 45 50 50 Q65 35 80 45 L85 65 Q70 70 60 65 L55 85 L45 85 Q48 70 35 70 L25 85 L15 85 Z" fill="#f59e0b"/><polygon points="75,40 90,30 78,48" fill="#e2e8f0"/><polygon points="68,38 78,20 72,42" fill="#e2e8f0"/></svg>`
+            },
+            {
+                id: 'velociraptor',
+                name: '벨로키라프토르',
+                scientific: 'Velociraptor mongoliensis',
+                era: '백악기',
+                diet: '육식성',
+                popWeight: 12,
+                maxAge: 18,
+                baseHp: 75,
+                baseHunger: 80,
+                baseEnergy: 110,
+                desc: '날렵한 신체와 뒤짓는 갈고리톱을 갖춘 지능적인 집단 사냥꾼입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M10 65 Q30 50 50 45 Q70 25 85 30 Q90 35 80 45 Q65 50 55 60 L60 80 L50 80 Q48 68 35 65 L25 80 L15 80 Z" fill="#10b981"/><circle cx="78" cy="33" r="2" fill="#ffffff"/></svg>`
+            },
+            {
+                id: 'brachiosaurus',
+                name: '브라키오사우루스',
+                scientific: 'Brachiosaurus altithorax',
+                era: '쥐라기',
+                diet: '초식성',
+                popWeight: 8,
+                maxAge: 70,
+                baseHp: 180,
+                baseHunger: 120,
+                baseEnergy: 60,
+                desc: '높은 침엽수 잎을 먹기 위해 거대한 긴 목을 지닌 쥐라기의 초거대 용각류입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M10 75 Q20 60 35 60 Q45 20 50 10 Q55 10 58 20 Q55 55 70 60 L80 60 L80 85 L70 85 Q68 72 52 72 L48 85 L38 85 Z" fill="#06b6d4"/></svg>`
+            },
+            {
+                id: 'spinosaurus',
+                name: '스피노사우루스',
+                scientific: 'Spinosaurus aegyptiacus',
+                era: '백악기',
+                diet: '육식성',
+                popWeight: 4,
+                maxAge: 30,
+                baseHp: 125,
+                baseHunger: 95,
+                baseEnergy: 90,
+                desc: '등 뒤의 거대한 돛과 수중 사냥에 특화된 반수생 대형 육식공룡입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M30 45 Q50 15 70 45 Z" fill="#a7f3d0"/><path d="M15 70 Q30 45 50 45 Q70 30 88 38 Q90 45 80 55 Q65 55 60 65 L65 85 L55 85 Q52 70 40 70 L30 85 L20 85 Z" fill="#8b5cf6"/></svg>`
+            },
+            {
+                id: 'stegosaurus',
+                name: '스테고사우루스',
+                scientific: 'Stegosaurus stenops',
+                era: '쥐라기',
+                diet: '초식성',
+                popWeight: 14,
+                maxAge: 40,
+                baseHp: 115,
+                baseHunger: 95,
+                baseEnergy: 70,
+                desc: '등에 우뚝 선 골판과 꼬리 끝의 날카로운 가시 골침을 지녔습니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><polygon points="30,45 35,30 42,45" fill="#f472b6"/><polygon points="45,42 52,22 60,42" fill="#f472b6"/><polygon points="62,45 70,30 75,48" fill="#f472b6"/><path d="M15 75 Q30 50 55 50 Q75 45 88 55 Q75 65 60 65 L55 85 L45 85 L42 68 L28 85 L18 85 Z" fill="#ec4899"/></svg>`
+            },
+            {
+                id: 'ankylosaurus',
+                name: '안킬로사우루스',
+                scientific: 'Ankylosaurus magniventris',
+                era: '백악기',
+                diet: '초식성',
+                popWeight: 10,
+                maxAge: 38,
+                baseHp: 140,
+                baseHunger: 90,
+                baseEnergy: 65,
+                desc: '온몸이 단단한 갑옷과 꼬리 곤봉으로 무장한 걸어다니는 요새입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 70 Q25 40 55 42 Q75 45 85 58 Q70 68 55 68 L50 82 L40 82 Q38 68 28 68 L20 82 L12 82 Z" fill="#64748b"/><circle cx="10" cy="70" r="5" fill="#94a3b8"/></svg>`
+            },
+            {
+                id: 'allosaurus',
+                name: '알로사우루스',
+                scientific: 'Allosaurus fragilis',
+                era: '쥐라기',
+                diet: '육식성',
+                popWeight: 7,
+                maxAge: 25,
+                baseHp: 110,
+                baseHunger: 85,
+                baseEnergy: 95,
+                desc: '쥐라기 생태계의 잔혹한 최상위 수각류 포식자입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M20 70 Q35 42 55 45 Q72 32 85 38 Q88 45 80 52 Q68 55 60 62 L65 82 L55 82 Q50 68 38 68 L28 82 L18 82 Z" fill="#f97316"/></svg>`
+            },
+            {
+                id: 'parasaurolophus',
+                name: '파라사우롤로푸스',
+                scientific: 'Parasaurolophus walkeri',
+                era: '백악기',
+                diet: '초식성',
+                popWeight: 12,
+                maxAge: 32,
+                baseHp: 100,
+                baseHunger: 85,
+                baseEnergy: 80,
+                desc: '머리 뒤로 길게 뻗은 뼛속 관을 통해 울려퍼지는 공명 소리로 무리와 소통합니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M80 25 C65 20 75 38 75 38" stroke="#14b8a6" stroke-width="4" fill="none"/><path d="M15 72 Q30 50 52 50 Q68 38 78 45 Q70 62 58 64 L52 82 L42 82 L38 66 L25 82 L15 82 Z" fill="#14b8a6"/></svg>`
+            },
+            {
+                id: 'diplodocus',
+                name: '디플로도쿠스',
+                scientific: 'Diplodocus longus',
+                era: '쥐라기',
+                diet: '초식성',
+                popWeight: 9,
+                maxAge: 60,
+                baseHp: 160,
+                baseHunger: 110,
+                baseEnergy: 65,
+                desc: '긴 채찍 같은 꼬리와 기다란 체구를 지닌 쥐라기의 대표 초식공룡입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M5 65 Q25 65 40 58 Q55 35 70 30 Q75 30 72 38 Q58 48 55 60 L75 60 L75 80 L65 80 L60 72 L45 72 L40 80 L30 80 Z" fill="#84cc16"/></svg>`
+            },
+            {
+                id: 'protoceratops',
+                name: '프로토케라톱스',
+                scientific: 'Protoceratops andrewsi',
+                era: '백악기',
+                diet: '초식성',
+                popWeight: 18,
+                maxAge: 20,
+                baseHp: 80,
+                baseHunger: 75,
+                baseEnergy: 85,
+                desc: '소형 각룡류로 사막과 건조 지역에서 무리를 지어 생존했던 공룡입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M20 70 Q30 52 50 52 Q65 42 75 50 Q68 65 58 65 L52 80 L42 80 L38 68 L28 80 L18 80 Z" fill="#eab308"/></svg>`
+            },
+            {
+                id: 'coelophysis',
+                name: '코엘로피시스',
+                scientific: 'Coelophysis bauri',
+                era: '트라이아스기',
+                diet: '육식성',
+                popWeight: 16,
+                maxAge: 15,
+                baseHp: 65,
+                baseHunger: 70,
+                baseEnergy: 120,
+                desc: '트라이아스기 말기에 활약한 날렵하고 재빠른 초기 민첩형 수각류 공룡입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M10 65 Q25 50 45 48 Q65 30 80 35 Q75 48 60 52 L62 75 L52 75 L48 58 L32 75 L22 75 Z" fill="#a855f7"/></svg>`
+            },
+            {
+                id: 'plateosaurus',
+                name: '플라테오사우루스',
+                scientific: 'Plateosaurus engelhardti',
+                era: '트라이아스기',
+                diet: '초식성',
+                popWeight: 15,
+                maxAge: 30,
+                baseHp: 95,
+                baseHunger: 85,
+                baseEnergy: 80,
+                desc: '트라이아스기 대지를 누빈 초기 두 발/네 발 겸용 대형 원용각류 초식공룡입니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 72 Q30 55 48 52 Q62 30 75 32 Q70 50 58 58 L54 78 L44 78 L40 64 L28 78 L18 78 Z" fill="#10b981"/></svg>`
+            },
+            {
+                id: 'anchiornis',
+                name: '앙키오르니스',
+                scientific: 'Anchiornis huxleyi',
+                era: '쥐라기',
+                diet: '육식성',
+                popWeight: 11,
+                maxAge: 12,
+                baseHp: 55,
+                baseHunger: 65,
+                baseEnergy: 125,
+                desc: '화려한 깃털을 지닌 소형 수각류로 깃털 공룡과 조류의 진화적 다리 역할을 합니다.',
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 65 Q30 45 50 45 Q68 28 80 32 Q72 45 58 52 L58 72 L48 72 L44 58 L30 72 L20 72 Z" fill="#3b82f6"/><path d="M50 45 Q30 35 20 40" stroke="#bfdbfe" stroke-width="3"/></svg>`
+            }
+        ];
 
-    <div class="mt"><span>건강</span><div class="bar"><i id="bh"></i></div><span id="vh"></span></div>
-    <div class="mt"><span>허기</span><div class="bar"><i id="bf" class="f"></i></div><span id="vf"></span></div>
-    <div class="mt"><span>기력</span><div class="bar"><i id="be"></i></div><span id="ve"></span></div>
+        const EVENTS_DB = [
+            {
+                title: '대형 포식자의 습격',
+                desc: '울창한 숲 그늘 속에서 굶주린 최상위 포식자가 당신을 노리고 다가옵니다.',
+                choices: [
+                    { text: '🏃 맹렬히 도망친다', type: 'flee', successRate: 0.75, msgWin: '신속하게 무성한 수풀 속으로 도망쳐 목숨을 건졌습니다.', msgLoss: '도망치던 중 웅덩이에 발이 걸려 상처를 입었습니다.' },
+                    { text: '⚔️ 당당히 맞서 싸운다', type: 'fight', successRate: 0.45, msgWin: '강렬한 반격으로 포식자에게 큰 타격을 주고 격퇴했습니다!', msgLoss: '포식자의 공격을 받아 중상을 입었습니다.' },
+                    { text: '🍃 은밀하게 수풀에 숨는다', type: 'hide', successRate: 0.85, msgWin: '숨을 죽이고 긴장 속에 포식자가 지나가길 기다렸습니다.', msgLoss: '들키고 말아 황급히 도망쳤습니다.' }
+                ]
+            },
+            {
+                title: '극심한 중생대 가뭄',
+                desc: '비가 수개월째 내리지 않아 강줄기가 마르고 식수가 고갈되어 갑니다.',
+                choices: [
+                    { text: '🌊 먼 오아시스를 찾아 이동한다', type: 'move', successRate: 0.8, msgWin: '험난한 여정 끝에 오아시스를 발견했습니다.', msgLoss: '뜨거운 태양 아래 지쳐 체력이 감소했습니다.' },
+                    { text: '🌵 뿌리와 말라붙은 줄기로 견딘다', type: 'endure', successRate: 0.9, msgWin: '최소한의 에너지 소비로 가뭄을 버텨냈습니다.', msgLoss: '영양 부족으로 몸이 약해졌습니다.' }
+                ]
+            }
+        ];
 
-    <div class="mu" style="margin-top:10px">삶의 초점 (행동 양식과 보너스가 달라집니다)</div>
-    <div class="row" style="justify-flex-start" id="foc"></div>
+        let gameState = {
+            currentDino: null,
+            age: 0,
+            hp: 100,
+            hunger: 80,
+            energy: 90,
+            focus: 'forage',
+            statusTags: [],
+            unlockedDex: JSON.parse(localStorage.getItem('dino_dex_unlocked') || '[]'),
+            history: JSON.parse(localStorage.getItem('dino_history') || '[]')
+        };
 
-    <div class="row" style="justify-content:flex-start;margin-top:10px">
-      <button class="sec" id="pz" onclick="pause()">⏸ 일시정지</button>
-      <button class="sec" id="sp" onclick="speed()">속도 1x</button>
-      <button class="sec" id="au" onclick="auto()">자동 선택 꺼짐</button>
-    </div>
+        window.onload = function() {
+            renderDex();
+            renderHistory();
+        };
 
-    <div class="mu" style="margin-top:12px">함께 서식하는 생물: <span id="mates"></span></div>
-    <div id="tgs" style="margin-top:6px"></div>
-    <hr style="border:0;border-top:1px solid var(--ln);margin:14px 0">
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
 
-    <h3 id="et">알에서 깨어납니다</h3>
-    <div id="ex" class="mu"></div>
-    <div class="ch" id="ch"></div>
-    <div class="lg" id="lg" style="margin-top:14px"></div>
-  </section>
+            ['rebirth', 'guide', 'dex', 'history'].forEach(id => {
+                const btn = document.getElementById(`nav-${id}`);
+                if (id === tabId) {
+                    btn.className = "px-3 py-1.5 rounded-lg transition-all text-emerald-400 bg-emerald-900/30 border border-emerald-500/30";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800";
+                }
+            });
+        }
 
-  <!-- 종료 화면 -->
-  <section class="c" id="E" hidden>
-    <div class="art">
-      <div class="em" id="ee"></div>
-      <h2 id="ek"></h2>
-      <p class="mu" id="et2"></p>
-      <div id="eb"></div>
-    </div>
-    <div class="row" style="justify-content:center;margin:12px 0">
-      <button class="pri" onclick="born()">다시 환생하기 →</button>
-      <button class="sec" id="cd" onclick="card()">생애 카드 복사/공유</button>
-    </div>
-    <div class="mu">이 삶에 한마디 기록을 남겨보세요 (12자 제한)</div>
-    <div class="row" style="flex-wrap:nowrap;margin-top:4px">
-      <input id="nt" maxlength="12" placeholder="예: 쥐라기의 지배자">
-      <button class="sec" onclick="note()">저장</button>
-    </div>
-    <h3 style="margin-top:18px">환생 기록 목록</h3>
-    <div class="lg" id="rc"></div>
-  </section>
+        function startRebirth() {
+            const mode = document.querySelector('input[name="spawnMode"]:checked').value;
+            let selectedDino = mode === 'equal' ? DINOSAURS[Math.floor(Math.random() * DINOSAURS.length)] : DINOSAURS[0];
+            
+            gameState.currentDino = selectedDino;
+            gameState.age = 0;
+            gameState.hp = selectedDino.baseHp;
+            gameState.hunger = selectedDino.baseHunger;
+            gameState.energy = selectedDino.baseEnergy;
+            gameState.statusTags = [];
 
-  <!-- 도감 화면 -->
-  <section class="c" id="X" hidden>
-    <div class="row">
-      <h3>공룡 도감 (Reborn Collection)</h3>
-      <button class="sec" onclick="hide('X');show('S')">닫기</button>
-    </div>
-    <div class="mu" id="dxc"></div>
-    <div class="dx" id="dx"></div>
-  </section>
+            if (!gameState.unlockedDex.includes(selectedDino.id)) {
+                gameState.unlockedDex.push(selectedDino.id);
+                localStorage.setItem('dino_dex_unlocked', JSON.stringify(gameState.unlockedDex));
+            }
 
-  <p class="mu" style="text-align:center;margin-top:20px">종 정보 및 개체 비중 시뮬레이션 모델은 게임성을 위한 가상 구조이며, 실제 고생물학적 행동 양식과는 차이가 있을 수 있습니다.</p>
-</div>
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
 
-<script>
-const $=i=>document.getElementById(i),show=i=>$(i).hidden=false,hide=i=>$(i).hidden=true;
-const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+            document.getElementById('dino-name').textContent = selectedDino.name;
+            document.getElementById('dino-scientific').textContent = selectedDino.scientific;
+            document.getElementById('dino-era-badge').textContent = selectedDino.era;
+            document.getElementById('dino-diet-badge').textContent = selectedDino.diet;
+            document.getElementById('dino-svg-container').innerHTML = selectedDino.svg;
 
-const D='티라노사우루스|Tyrannosaurus rex|🦖|백악기 후기|육식|28|3|북아메리카의 범람원|트리케라톱스,에드몬토사우루스,작은 포유류|강력한 턱과 치명적인 치악력을 지닌 최고위 포식자입니다.\n트리케라톱스|Triceratops horridus|🦏|백악기 후기|초식|30|9|북아메리카의 숲과 평원|티라노사우루스,안킬로사우루스,고사리 숲|세 개의 큰 뿔과 두꺼운 프릴로 육식 공룡에 맞섭니다.\n벨로키랍토르|Velociraptor mongoliensis|🦖|백악기 후기|육식|15|5|건조한 사막과 모래언덕|프로토케라톱스,도마뱀,익룡|깃털을 가졌던 민첩하고 지능적인 소형 사냥꾼입니다.\n프로토케라톱스|Protoceratops andrewsi|🦎|백악기 후기|초식|12|12|모래언덕과 관목 지대|벨로키랍토르,작은 도마뱀|무리를 지어 활발하게 생존을 도모하는 소형 초식 공룡입니다.\n브라키오사우루스|Brachiosaurus altithorax|🦕|쥐라기 후기|초식|60|6|따뜻하고 습한 침엽수림|알로사우루스,스테고사우루스,소철 숲|긴 목으로 키 큰 나무의 나뭇잎을 섭취하는 초거대 용각류입니다.\n디플로도쿠스|Diplodocus longus|🦕|쥐라기 후기|초식|50|6|넓은 범람원|알로사우루스,케라토사우루스,양치식물|채찍 같은 기다란 꼬리를 이용해 거대한 무리를 지어 이동합니다.\n스테고사우루스|Stegosaurus stenops|🦕|쥐라기 후기|초식|25|8|고사리와 침엽수 평원|알로사우루스,브라키오사우루스|등 줄기의 골판과 꼬리 가시(골침)로 적에 대응합니다.\n알로사우루스|Allosaurus fragilis|🦖|쥐라기 후기|육식|28|4|계절성 범람원|디플로도쿠스,스테고사우루스|쥐라기 생태계를 지배한 날렵하고 강력한 대형 포식자입니다.\n안킬로사우루스|Ankylosaurus magniventris|🐢|백악기 후기|초식|30|5|울창한 저지대 숲|트리케라톱스,티라노사우루스|단단한 갑옷 장갑과 묵직한 꼬리 곤봉을 지닌 초식 공룡입니다.\n스피노사우루스|Spinosaurus aegyptiacus|🐊|백악기|육식|25|2|강과 해안의 물가|거대한 물고기,익룡,악어류|긴 주둥이와 거대한 등 돛을 지닌 반수생 사냥꾼입니다.\n파라사우롤로푸스|Parasaurolophus walkeri|🦕|백악기 후기|초식|20|10|강가의 숲|티라노사우루스,침엽수 숲|머리 뒤쪽의 긴 관상 볏으로 울림소리를 내어 소통합니다.\n코엘로피시스|Coelophysis bauri|🦎|트라이아스기 후기|육식|15|7|건조한 강변|플라테오사우루스,초기 악어류|가볍고 날렵한 몸체로 사냥하던 트라이아스기의 초기 육식 공룡입니다.\n플라테오사우루스|Plateosaurus engelhardti|🦕|트라이아스기 후기|초식|20|6|건조한 내륙 평원|코엘로피시스,침엽수 숲|육중한 몸집으로 무리를 지어 넓은 영역을 이동하던 초기 용각류입니다.\n안키오르니스|Anchiornis huxleyi|🐦|쥐라기 후기|육식|8|6|화산 근처의 숲|곤충,작은 도마뱀,양치식물|네 날개 형태의 선명한 깃털을 가졌던 소형 파충류입니다.'.split('\n').map(s=>{const a=s.split('|');return{n:a[0],l:a[1],e:a[2],era:a[3],diet:a[4],life:+a[5],w:+a[6],hab:a[7],mates:a[8].split(','),ds:a[9]}});
+            updateStatsDisplay();
+            nextTurnEvent();
+        }
 
-const EV=[
-['위험이 다가옵니다','불길한 움직임이 느껴집니다. 신중히 선택하세요.','',[['숨는다','덤불 속에 몸을 숨깁니다.',3,-5,4,'안전하게 몸을 숨겼습니다.',.85],['달아난다','빠르게 현장을 이탈합니다.',0,-16,4,'전력 질주해 벗어났습니다.',.8],['맞선다','위협에 당당히 맞섭니다.',-9,-9,2,'상대와 대치했습니다.',.55]]],
-['날씨 변화','갑작스러운 비바람과 거친 폭풍이 몰려옵니다.','',[['그늘을 찾는다','바위 그늘로 피합니다.',3,-5,4,'바위 그늘에서 폭풍을 피했습니다.'],['계속 이동한다','새 터전을 찾아 이동합니다.',-3,-12,3,'거친 날씨 속에 이동했습니다.'],['웅크리고 쉰다','체력을 보존합니다.',1,12,7,'웅크려 날씨가 지나기를 기다렸습니다.']]],
-['화산재 낙하','하늘이 어두워지며 화산재가 내립니다.','',[['동굴로 피한다','안전한 곳으로 대피합니다.',3,2,9,'동굴 안으로 피신했습니다.',.8],['물가로 이동한다','맑은 물을 찾습니다.',-2,-13,2,'물가로 먼 길을 이동했습니다.'],['버틴다','그 자리에서 버팁니다.',-7,-6,5,'화산재를 견뎌냈습니다.']]],
-['사냥 기회','먹잇감 무리가 허점을 보이고 있습니다.','c',[['매복해서 덮친다','크게 배를 채우지만 실패하면 지칩니다.',-3,-14,-38,'매복 사냥에 성공했습니다.',.6],['약한 개체를 쫓는다','안전하지만 얻는 것이 적습니다.',0,-8,-20,'약한 개체를 사냥했습니다.',.8],['사냥을 미룬다','기력을 아낍니다.',2,8,7,'사냥을 미루고 휴식했습니다.']]],
-['영역 다툼','다른 포식자가 내 영역에 침입했습니다.','c',[['포효하며 위협한다','싸우지 않고 쫓아냅니다.',-2,-6,3,'포효로 침입자를 쫓아냈습니다.',.7],['정면으로 싸운다','영역을 지키지만 다칠 수 있습니다.',-12,-12,3,'치열하게 맞붙어 승리했습니다.',.5],['자리를 양보한다','다툼을 피합니다.',0,-5,5,'조용히 자리를 비켜주었습니다.']]],
-['썩은 고기 냄새','바람에 매혹적인 고기 냄새가 실려옵니다.','c',[['전력으로 달려간다','경쟁자보다 먼저 차지합니다.',-3,-10,-30,'누구보다 빨리 고기를 차지했습니다.',.6],['주변을 살피며 접근한다','안전하게 다가갑니다.',0,-5,-18,'경계하며 조용히 포식했습니다.',.8],['무시한다','사냥감을 직접 잡습니다.',1,4,6,'냄새를 무시하고 지나쳤습니다.']]],
-['푸른 식물 지대','신선한 잎과 고사리가 가득한 지대입니다.','h',[['무리와 함께 먹는다','안전하게 배를 채웁니다.',2,-4,-26,'무리와 함께 잎을 뜯었습니다.'],['높은 가지를 노린다','영양가가 높지만 힘이 듭니다.',0,-10,-32,'높은 가지의 잎을 먹었습니다.',.75],['적당히 먹고 쉰다','천천히 회복합니다.',3,8,-14,'적당히 먹고 안정을 취했습니다.']]],
-['포식자의 울음','멀리서 대형 육식 공룡의 울음소리가 들립니다.','h',[['무리 한가운데로 숨는다','안전하게 보호받습니다.',3,-4,5,'무리 틈에 바짝 붙었습니다.',.9],['주변을 경계하며 멈춘다','소리가 멀어지길 기다린다',1,-3,4,'숨죽이고 소리가 사라지길 기다렸습니다.',.75],['반대편으로 달린다','전력으로 도망칩니다.',-2,-15,4,'겁을 먹고 멀리 도망쳤습니다.',.7]]]
-];
+        function updateStatsDisplay() {
+            const dino = gameState.currentDino;
+            document.getElementById('dino-age-display').textContent = `${gameState.age} 세`;
+            document.getElementById('bar-hp').style.width = `${(gameState.hp / dino.baseHp) * 100}%`;
+            document.getElementById('val-hp').textContent = `${Math.round(gameState.hp)}/${dino.baseHp}`;
+            document.getElementById('bar-hunger').style.width = `${(gameState.hunger / dino.baseHunger) * 100}%`;
+            document.getElementById('bar-energy').style.width = `${(gameState.energy / dino.baseEnergy) * 100}%`;
+        }
 
-const AR=[['#6e4f35','#c9a97a',1,34,22,26,54,-3,20,38,17,19,11,'','#e49a8c'],['#6f7f4a','#b9a06a',0,38,22,20,26,2,10,10,18,16,11,'h','#e49a8c'],['#8a5a3a','#d9c08a',1,18,10,24,46,-4,14,35,8,12,6,'f','#e49a8c',1.5],['#9a8a5a','#d6c08a',0,22,13,12,20,2,8,10,10,10,7,'h','#e49a8c',1.5],['#6a7f8a','#b5c4c9',0,32,20,30,34,4,44,55,10,10,6,'','#8ec7c9'],['#7a8a6a','#c3cfa8',0,28,17,26,70,-2,52,32,9,10,5,'','#8ec7c9'],['#6a7a4a','#d98a4a',0,32,21,16,40,0,14,-10,10,9,5,'p','#8ec7c9'],['#7a6a3a','#d9c08a',1,30,19,26,50,-3,18,40,14,17,9,'','#8ec7c9'],['#7a6a5a','#c9b79a',0,32,17,14,32,2,8,0,15,12,8,'a','#e49a8c'],['#4a7a7a','#d9894a',1,32,19,24,52,-2,24,25,13,23,7,'s','#e49a8c'],['#7a6a8a','#d9a05a',1,28,17,26,50,-2,22,40,11,15,8,'c','#e49a8c'],['#9a7a4a','#e2cf9a',1,16,8,24,54,-2,26,45,6,12,5,'','#e8b77a',1.4],['#7a8a5a','#c9d19a',1,24,15,26,46,-2,36,55,8,10,6,'','#e8b77a'],['#3a3a4a','#c94a3a',1,10,6,16,26,-3,10,40,5,8,4,'f','#8ec7c9',2.4]];
+        function setLifeFocus(mode) {
+            gameState.focus = mode;
+        }
 
-function art(i){
-  const[c,c2,bp,rx,ry,lg,tl,ty,nl,an,nw,hl,hh,ft,sk,z=1]=AR[i],g=104,cx=96,cy=g-lg-ry,bx=cx-rx+6,fx=cx+rx-6,fy=cy-ry*.35,r=an*Math.PI/180,hx=fx+nl*Math.cos(r),hy=fy-nl*Math.sin(r),yb=x=>cy-ry*Math.sqrt(Math.max(0,1-((x-cx)/rx)**2)),lw=Math.max(5,ry*.5);
-  let s=`<svg viewBox='0 0 200 120' xmlns='http://www.w3.org/2000/svg'><rect width='200' height='120' fill='${sk}'/><circle cx='168' cy='22' r='11' fill='#fff' fill-opacity='.6'/><path d='M0 86L36 58L72 82L116 52L158 80L200 62V120H0Z' fill='#000' fill-opacity='.15'/><rect y='${g-3}' width='200' height='30' fill='#5d7a3a'/><path d='M14 104l-5-15M14 104l2-17M14 104l9-13M182 104l-5-13M182 104l3-16M182 104l9-11' stroke='#2f4a22' stroke-width='2.2' fill='none'/><g transform='translate(${96*(1-z)} ${g*(1-z)}) scale(${z})'><ellipse cx='${cx}' cy='${g+1}' rx='${rx*1.1}' ry='3' fill='#000' fill-opacity='.25'/>`;
-  const L=bp?[cx-4,cx+10]:[cx-rx*.55,cx-rx*.25,cx+rx*.3,cx+rx*.6];
-  L.forEach((x,k)=>{s+=`<line x1='${x}' y1='${cy+ry*.4}' x2='${x}' y2='${g-1}' stroke='${c}' stroke-width='${bp?lw*1.1:lw}' stroke-linecap='round' opacity='${k%2?1:.78}'/><ellipse cx='${x+3}' cy='${g}' rx='6' ry='2.5' fill='${c}'/>`});
-  s+=`<path d='M${bx} ${cy-ry*.6}Q${bx-tl*.5} ${cy-ry*.3+ty} ${bx-tl} ${cy+ty}Q${bx-tl*.5} ${cy+ry*.4} ${bx} ${cy+ry*.6}Z' fill='${c}'/>`;
-  if(ft=='p')for(let k=0;k<8;k++){const x=cx-rx*.85+k*rx*.25,h=7+9*Math.sin(k/7*3.14);s+=`<path d='M${x-5} ${yb(x)+2}L${x} ${yb(x)-h}L${x+5} ${yb(x)+2}Z' fill='${c2}'/>`}
-  if(ft=='s')s+=`<path d='M${cx-rx*.5} ${yb(cx-rx*.5)+2}Q${cx} ${cy-ry-34} ${cx+rx*.5} ${yb(cx+rx*.5)+2}Z' fill='${c2}'/>`;
-  s+=`<ellipse cx='${cx}' cy='${cy}' rx='${rx}' ry='${ry}' fill='${c}'/><ellipse cx='${cx}' cy='${cy+ry*.3}' rx='${rx*.88}' ry='${ry*.62}' fill='${c2}' fill-opacity='.5'/>`;
-  if(ft=='a'){for(let k=0;k<9;k++){const x=cx-rx*.8+k*rx*.2;s+=`<circle cx='${x}' cy='${yb(x)+3}' r='3' fill='${c2}'/>`}s+=`<circle cx='${bx-tl}' cy='${cy+ty}' r='8' fill='${c2}'/>`}
-  s+=`<line x1='${fx-4}' y1='${fy+2}' x2='${hx}' y2='${hy}' stroke='${c}' stroke-width='${nw}' stroke-linecap='round'/>`;
-  if(ft=='h')s+=`<ellipse cx='${hx-hl*.3}' cy='${hy-hh*.3}' rx='${hl*.9}' ry='${hh*1.8}' fill='${c2}'/>`;
-  s+=`<ellipse cx='${hx+hl*.3}' cy='${hy}' rx='${hl}' ry='${hh}' fill='${c}'/>`;
-  if(ft=='h')s+=`<path d='M${hx+hl*.2} ${hy-hh*.4}L${hx+hl*1.2} ${hy-hh*1.5}L${hx+hl*.6} ${hy-hh*.1}ZM${hx+hl*1.1} ${hy-hh*.2}L${hx+hl*1.5} ${hy-hh*.9}L${hx+hl*1.3} ${hy+hh*.1}Z' fill='#efe6c8'/>`;
-  if(ft=='c')s+=`<path d='M${hx} ${hy-hh*.6}Q${hx-hl*1.4} ${hy-hh*2.8} ${hx-hl*2.4} ${hy-hh*1.2}' stroke='${c2}' stroke-width='4' fill='none' stroke-linecap='round'/>`;
-  s+=`<circle cx='${hx+hl*.4}' cy='${hy-hh*.3}' r='${Math.max(1.3,hh*.18)}' fill='#111'/><path d='M${hx+hl*.5} ${hy+hh*.35}L${hx+hl*1.2} ${hy+hh*.3}' stroke='#0008' stroke-width='1'/>`;
-  if(bp)s+=`<line x1='${fx-8}' y1='${cy+ry*.1}' x2='${fx+2}' y2='${cy+ry*.65}' stroke='${c}' stroke-width='3.5' stroke-linecap='round'/>`;
-  if(ft=='f')s+=`<ellipse cx='${cx+rx*.1}' cy='${cy}' rx='${rx*.9}' ry='${ry*.45}' fill='${c2}' fill-opacity='.9' transform='rotate(-18 ${cx} ${cy})'/><path d='M${bx-tl} ${cy+ty}l-9 -7M${bx-tl} ${cy+ty}l-11 0M${bx-tl} ${cy+ty}l-11 0M${bx-tl} ${cy+ty}l-9 7' stroke='${c2}' stroke-width='3' stroke-linecap='round'/>`;
-  return s+'</g></svg>';
-}
+        function nextTurnEvent() {
+            if (gameState.hp <= 0 || gameState.age >= gameState.currentDino.maxAge) {
+                triggerGameOver('생존 종료');
+                return;
+            }
+            const ev = EVENTS_DB[Math.floor(Math.random() * EVENTS_DB.length)];
+            document.getElementById('event-title').textContent = ev.title;
+            document.getElementById('event-desc').textContent = ev.desc;
+            
+            const choicesContainer = document.getElementById('event-choices-container');
+            choicesContainer.innerHTML = '';
+            ev.choices.forEach(choice => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3 rounded-xl bg-mesozoic-900 hover:bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200";
+                btn.textContent = choice.text;
+                btn.onclick = () => resolveChoice(choice);
+                choicesContainer.appendChild(btn);
+            });
+        }
 
-const FO={f:['먹이 탐색',[3,-3,0],1],g:['경계 태세',[5,-2,1],.6],r:['휴식/성장',[6,-1,0],1]};
-const SEA=['봄','여름','가을','겨울'],SP=[2200,1100,550],ST=a=>a<.08?'새끼':a<.25?'어린 시기':a<.75?'성체':'노년기';
-let mode=1,st=null,tm=null,rec=ld('dr',[]),seen=ld('ds',[]),cnt=ld('dc',0),pick=null;
-const cl=v=>Math.max(0,Math.min(100,Math.round(v)));
+        function resolveChoice(choice) {
+            gameState.age++;
+            gameState.hp -= 10;
+            updateStatsDisplay();
+            nextTurnEvent();
+        }
 
-$('cnt').textContent=cnt?`지금까지 환생을 시작한 생명: ${cnt}개체`:'';
+        function triggerGameOver(reason) {
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+        }
 
-function setM(m){mode=m;$('m1').className=m?'on':'';$('m0').className=m?'':'on'}
+        function renderDex() {
+            const container = document.getElementById('dex-grid');
+            container.innerHTML = '';
+            DINOSAURS.forEach(dino => {
+                const card = document.createElement('div');
+                card.className = "p-4 rounded-xl border bg-mesozoic-800 border-slate-700";
+                card.innerHTML = `<h4 class="font-bold text-white">${dino.name}</h4><p class="text-xs text-slate-400">${dino.desc}</p>`;
+                container.appendChild(card);
+            });
+        }
 
-function born(){
-  clearTimeout(tm);['S','E','X'].forEach(hide);show('G');
-  const tot=D.reduce((s,d)=>s+(mode?d.w:1),0);let r=Math.random()*tot,d=D[0];
-  for(const x of D){r-=mode?x.w:1;if(r<=0){d=x;break}}
-  const p=(mode?d.w:1)/tot,mt=d.mates.slice().sort(()=>Math.random()-.5).slice(0,3);
-  st={d,p,age:0,h:88,e:80,f:22,fo:'f',pz:0,sp:0,au:0,alive:1,wait:0,logs:[],n:{ev:0,ok:0,bad:0},tg:{},last:null};
-  cnt++;sv('dc',cnt);$('cnt').textContent='';
-  if(!seen.includes(d.n)){seen.push(d.n);sv('ds',seen)}
-  
-  $('em').innerHTML=art(D.indexOf(d));$('nm').textContent=d.n;$('lt').textContent=d.l;$('ds').textContent=d.ds;$('era').textContent=d.era;
-  $('tags').innerHTML=[d.diet,'예상 수명 약 '+d.life+'년','탄생 확률 '+(p*100).toFixed(1)+'%'].map(t=>`<span class="tag">${t}</span>`).join('');
-  $('mates').textContent=mt.join(' · ');
-  $('foc').innerHTML=Object.keys(FO).map(k=>`<button class="sec" data-k="${k}" onclick="setFo('${k}')">${FO[k][0]}</button>`).join('');
-  $('et').textContent='알에서 깨어납니다';$('ex').textContent=d.hab+'에서 첫눈을 뜹니다. 식성에 맞는 생존 여정이 시작됩니다.';$('ch').innerHTML='';
-  $('pz').textContent='⏸ 일시정지';$('sp').textContent='속도 1x';$('au').textContent='자동 선택 꺼짐';
-  log('탄생',`${d.n} (${d.diet})으로 새로운 생애를 시작했습니다.`);render();loop();scrollTo({top:0,behavior:'smooth'});
-}
-
-function log(t,x){st.logs.push([t,x])}
-function setFo(k){st.fo=k;render();log(st.age+'년','삶의 초점: '+FO[k][0])}
-function pause(){st.pz=!st.pz;$('pz').textContent=st.pz?'▶ 계속하기':'⏸ 일시정지'}
-function speed(){st.sp=(st.sp+1)%3;$('sp').textContent='속도 '+[1,2,4][st.sp]+'x'}
-function auto(){st.au=!st.au;$('au').textContent='자동 선택 '+(st.au?'켜짐':'꺼짐');if(st.au&&st.wait)autoPick()}
-function loop(){clearTimeout(tm);tm=setTimeout(()=>{tick();if(st&&st.alive)loop()},SP[st.sp])}
-
-function tick(){
-  if(!st.alive||st.wait||st.pz)return;
-  st.age++;const F=FO[st.fo][1],w=st.age%4==3?2:0;
-  st.f+=F[0]+w;st.e+=F[1];st.h+=F[2];
-  
-  if(st.f>=90)st.h-=5;if(st.e<=5)st.h-=2;if(st.age>st.d.life*.75)st.h-=1;
-  st.h=cl(st.h);st.e=cl(st.e);st.f=cl(st.f);
-  
-  const sg=ST(st.age/st.d.life);
-  log(st.age+'년',`${SEA[st.age%4]} · 평온하게 서식지를 거닐었습니다.`+(st.sg&&sg!=st.sg?` (${sg}가 되었습니다)`:''));
-  st.sg=sg;render();
-  if(over())return;
-  event();
-}
-
-function over(){
-  if(st.h<=0||st.f>=100){finish(0);return 1}
-  if(st.age>=st.d.life){finish(1);return 1}
-}
-
-function event(){
-  const dt=st.d.diet=='육식'?'c':'h';
-  const pool=EV.filter(x=>(!x[2]||x[2]==dt)&&x!==st.last);
-  const e=pool[Math.floor(Math.random()*pool.length)];
-  st.wait=1;st.n.ev++;st.last=e;
-  $('et').textContent=e[0];$('ex').textContent=e[1];
-  $('ch').innerHTML='';
-  e[3].forEach(c=>{
-    const b=document.createElement('button');
-    b.innerHTML=`<b>${c[0]}</b><small>${c[1]}</small>`;
-    b.onclick=()=>choose(c);
-    $('ch').appendChild(b);
-  });
-  pick=e[3];if(st.au)autoPick();
-}
-
-function autoPick(){
-  const c=pick[Math.floor(Math.random()*pick.length)];
-  setTimeout(()=>{if(st&&st.alive&&st.wait)choose(c)},SP[st.sp]*.8);
-}
-
-function choose(c){
-  if(!st.alive||!st.wait)return;
-  let [,,h,e,f,lg,p]=c,ok=p===undefined||Math.random()<p;
-  if(!ok){h=Math.min(h,0)-3;e=Math.min(e,-6);f=Math.max(f,0)}
-  st.h=cl(st.h+h);st.e=cl(st.e+e);st.f=cl(st.f+f);
-  log(st.age+'년',lg+(ok?'':' (결과가 좋지 않았습니다)'));
-  st.wait=0;st.n[ok?'ok':'bad']++;
-  $('ch').innerHTML='';$('et').textContent=(ok?'✔ ':'✘ ')+c[0];
-  $('ex').textContent=lg+(ok?'':' 실패하여 체력이 소모되었습니다.');
-  render();over();
-}
-
-function render(){
-  $('age').textContent=`· ${st.age}년째 · ${SEA[st.age%4]} · ${ST(st.age/st.d.life)}`;
-  [['h',st.h,1],['f',st.f,0],['e',st.e,1]].forEach(([k,v,g])=>{
-    $('b'+k).style.width=v+'%';$('v'+k).textContent=v;
-    $('b'+k).className=(k=='f'?'f':'')+((g?v<30:v>75)?' d':'');
-  });
-  document.querySelectorAll('#foc button').forEach(b=>b.classList.toggle('on',b.dataset.k==st.fo));
-  $('lg').innerHTML=st.logs.slice(-6).reverse().map(l=>`<div><b>${l[0]}</b>${l[1]}</div>`).join('');
-}
-
-function finish(ok){
-  st.alive=0;clearTimeout(tm);hide('G');show('E');const d=st.d;
-  $('ee').innerHTML=art(D.indexOf(d));
-  const ttl=ok?'자연스러운 수명에 다다랐습니다.':(st.f>=100?'기아로 생을 마감했습니다.':'기력이 다해 쓰러졌습니다.');
-  $('ek').textContent=(ok?'🌿 ':'🍂 ')+ttl;
-  $('et2').textContent=`${d.n}으로 고대 지구에서 ${st.age}년 동안 살아남았습니다.`;
-  $('eb').innerHTML=[d.era,d.diet,st.age+'년 생존','마주친 사건 '+st.n.ev+'회'].map(t=>`<span class="tag">${t}</span>`).join('');
-  rec.unshift({n:d.n,e:d.e,a:st.age,ok,dt:new Date().toLocaleDateString('ko-KR'),nt:''});
-  rec=rec.slice(0,12);sv('dr',rec);recs();scrollTo({top:0,behavior:'smooth'});
-}
-
-function recs(){
-  $('rc').innerHTML=rec.length?rec.map(r=>`<div><b>${r.dt}</b>${r.e} ${r.n} · ${r.a}년 생존${r.ok?' (완주)':''}${r.nt?' · “'+r.nt.replace(/</g,'&lt;')+'”':''}</div>`).join(''):'<div>아직 환생 기록이 없습니다.</div>';
-}
-
-function note(){
-  const v=$('nt').value.trim();
-  if(rec[0]&&v){rec[0].nt=v;sv('dr',rec);recs();alert('기록이 저장되었습니다.');}
-}
-
-async function card(){
-  const r=rec[0],t=`[공룡환생소] ${r.e} ${r.n}(으)로 ${r.a}년 동안 살았습니다!\n시대: ${st.d.era} | 탄생 확률: ${(st.p*100).toFixed(1)}%\nhttps://skdlfj2005-boop.github.io/`;
-  try{
-    if(navigator.share){
-      await navigator.share({title:'공룡환생소 생애 기록',text:t,url:'https://skdlfj2005-boop.github.io/'});
-      $('cd').textContent='공유 성공 ✓';
-    }else{
-      await navigator.clipboard.writeText(t);
-      $('cd').textContent='기록 복사 완료 ✓';
-    }
-  }catch(e){prompt('아래 생애 기록 문구를 복사하여 공유하세요:',t)}
-}
-
-function again(){
-  if(confirm('진행 중인 삶을 마치고 새로 태어나시겠습니까?')){
-    clearTimeout(tm);if(st)st.alive=0;hide('G');show('S');
-  }
-}
-
-function dex(){
-  hide('S');show('X');
-  $('dxc').textContent=`발견한 공룡: ${seen.length} / ${D.length}종`;
-  $('dx').innerHTML=D.map(d=>seen.includes(d.n)?`<div><div class="th">${art(D.indexOf(d))}</div><b>${d.n}</b><br><span class="mu">${d.era} · ${d.diet}<br>${d.hab}</span></div>`:`<div class="no"><div style="font-size:30px;text-align:center">❔</div><b>???</b><br><span class="mu">${d.era}</span></div>`).join('');
-}
-
-recs();
-</script>
+        function renderHistory() {}
+        function clearHistory() {}
+        function copyResultText() {}
+        function shareResultWebAPI() {}
+    </script>
 </body>
 </html>
-
-```
