@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Custom Scrollbar for immersive UI */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -73,6 +74,7 @@
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('rebirth')">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg glow-emerald">
+                    <i class="fa-solid to-dragon"></i>
                     🦕
                 </div>
                 <div>
@@ -332,8 +334,9 @@
             </div>
         </section>
 
-        <!-- TAB 2: DETAILED GUIDE & LORE -->
+        <!-- TAB 2: DETAILED GUIDE & LORE (게임 설명 & 세계관 페이지) -->
         <section id="tab-guide" class="tab-content hidden space-y-8">
+            <!-- Header Banner -->
             <div class="bg-mesozoic-800 border border-emerald-900/60 rounded-2xl p-6 md:p-8">
                 <h2 class="text-2xl md:text-3xl font-black text-white mb-2"><i class="fa-solid fa-book-journal-whills text-emerald-400 mr-2"></i>공룡환생소 가이드 & 중생대 세계관</h2>
                 <p class="text-slate-300 text-sm leading-relaxed">
@@ -341,29 +344,89 @@
                 </p>
             </div>
 
+            <!-- Accordion Section 1: Mesozoic Eras Lore -->
             <div class="bg-mesozoic-800/90 border border-slate-700/80 rounded-2xl p-6 space-y-4">
                 <h3 class="text-lg font-bold text-emerald-400 border-b border-slate-700 pb-2">1. 중생대 3대 시대 (Mesozoic Eras)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-mesozoic-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
                         <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-400 border border-amber-800">트라이아스기 (Triassic)</span>
                         <h4 class="text-sm font-bold text-white">공룡의 태동기</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed">하나의 초대륙 판게아 시대. 건조하고 혹독한 기후 속에서 소형 공룡들이 생존 경쟁을 시작했습니다.</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            하나의 초대륙 판게아(Pangaea) 시대. 건조하고 혹독한 기후 속에서 소형 공룡들이 생존 경쟁을 시작했습니다.
+                        </p>
                     </div>
                     <div class="bg-mesozoic-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
                         <span class="text-xs font-bold px-2 py-0.5 rounded bg-teal-950 text-teal-400 border border-teal-800">쥐라기 (Jurassic)</span>
                         <h4 class="text-sm font-bold text-white">거대 공룡의 황금기</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed">습윤한 기후와 풍부한 울창한 산림. 브라키오사우루스와 같은 초거대 용각류가 지배했던 시대입니다.</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            습윤한 기후와 풍부한 울창한 산림. 브라키오사우루스와 같은 초거대 용각류가 지배했던 시대입니다.
+                        </p>
                     </div>
                     <div class="bg-mesozoic-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
                         <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-950 text-rose-400 border border-rose-800">백악기 (Cretaceous)</span>
                         <h4 class="text-sm font-bold text-white">종의 다양성과 정점</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed">티라노사우루스와 트리케라톱스 등 최강의 포식자와 방어 장갑을 갖춘 공룡들이 각축을 벌인 백열의 시대입니다.</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            티라노사우루스와 트리케라톱스 등 최강의 포식자와 방어 장갑을 갖춘 공룡들이 각축을 벌인 백열의 시대입니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Section 2: Game Systems & Mechanics -->
+            <div class="bg-mesozoic-800/90 border border-slate-700/80 rounded-2xl p-6 space-y-6">
+                <h3 class="text-lg font-bold text-emerald-400 border-b border-slate-700 pb-2">2. 핵심 스탯 및 시스템 가이드</h3>
+
+                <!-- Stats Breakdown -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-slate-200">📊 3대 기본 스탯</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                        <div class="bg-mesozoic-900 p-3 rounded-lg border border-slate-800">
+                            <span class="font-bold text-rose-400 block mb-1">체력 (Health)</span>
+                            <p class="text-slate-400">0이 되면 생이 마감됩니다. 포만감이나 활력이 고갈되면 지속적으로 감소합니다.</p>
+                        </div>
+                        <div class="bg-mesozoic-900 p-3 rounded-lg border border-slate-800">
+                            <span class="font-bold text-amber-400 block mb-1">포만감 (Hunger)</span>
+                            <p class="text-slate-400">매년 자연 감소합니다. 먹이 탐색 실패나 기근 이벤트 시 급격히 떨어집니다.</p>
+                        </div>
+                        <div class="bg-mesozoic-900 p-3 rounded-lg border border-slate-800">
+                            <span class="font-bold text-teal-400 block mb-1">활력 (Energy)</span>
+                            <p class="text-slate-400">사냥, 도주, 전투 선택 시 소비되며, 휴식 및 성장을 통해 회복할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Life Focus Explanation -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-slate-200">🎯 생활 태세 (Life Focus) 메커니즘</h4>
+                    <div class="bg-mesozoic-900 p-4 rounded-xl border border-slate-800 space-y-2 text-xs text-slate-300">
+                        <p><strong>• 먹이 탐색 (Forage):</strong> 포만감을 크게 높여주지만 위험지역 노출 확률 및 포식자 조우 위험 증가.</p>
+                        <p><strong>• 경계 태세 (Vigilant):</strong> 생존 확률 판정에 +20% 보너스 부여, 단 활력이 지속 감소.</p>
+                        <p><strong>• 휴식 & 성장 (Rest):</strong> 체력과 활력을 크게 회복하고 성장 촉진 버프 부여.</p>
+                    </div>
+                </div>
+
+                <!-- Status Tags -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-slate-200">🏷️ 상태 태그 (Status Effects)</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                        <div class="bg-rose-950/40 border border-rose-800 p-3 rounded-lg">
+                            <span class="font-bold text-rose-400 block mb-1">🤕 부상 (Injured)</span>
+                            <p class="text-slate-300">전투나 사고 실패 시 부여. 도주/사냥 성공률 25% 감소 및 매턴 HP 감소.</p>
+                        </div>
+                        <div class="bg-emerald-950/40 border border-emerald-800 p-3 rounded-lg">
+                            <span class="font-bold text-emerald-400 block mb-1">🤝 유대 (Bonded)</span>
+                            <p class="text-slate-300">무리 지어 생존할 경우 부여. 위험 이벤트 방어력 상승 및 포만감 공유.</p>
+                        </div>
+                        <div class="bg-amber-950/40 border border-amber-800 p-3 rounded-lg">
+                            <span class="font-bold text-amber-400 block mb-1">👑 지도자 (Alpha)</span>
+                            <p class="text-slate-300">성체 달성 및 영역 확보 시 부여. 모든 이벤트 판정 시 보너스 가산.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 3: DINOSAUR DEX -->
+        <!-- TAB 3: DINOSAUR DEX (공룡 도감) -->
         <section id="tab-dex" class="tab-content hidden space-y-6">
             <div class="bg-mesozoic-800 border border-emerald-900/60 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div>
@@ -375,10 +438,13 @@
                 </div>
             </div>
 
-            <div id="dex-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            <!-- Dino Cards Grid -->
+            <div id="dex-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Dynamic Dex Cards Inserted Here -->
+            </div>
         </section>
 
-        <!-- TAB 4: REBIRTH HISTORY -->
+        <!-- TAB 4: REBIRTH HISTORY (환생 기록) -->
         <section id="tab-history" class="tab-content hidden space-y-6">
             <div class="bg-mesozoic-800 border border-emerald-900/60 rounded-2xl p-6 flex items-center justify-between">
                 <div>
@@ -390,11 +456,14 @@
                 </button>
             </div>
 
-            <div id="history-container" class="space-y-3"></div>
+            <div id="history-container" class="space-y-3">
+                <!-- Dynamic History Cards Inserted Here -->
+            </div>
         </section>
 
     </main>
 
+    <!-- Footer -->
     <footer class="border-t border-slate-800 bg-mesozoic-900 py-6 text-center text-xs text-slate-500">
         <div class="max-w-6xl mx-auto px-4 space-y-2">
             <p>© 2026 공룡환생소 (Dinosaur Rebirth Simulator). Styled like rebornonearth.com.</p>
@@ -412,6 +481,9 @@
 
     <!-- MAIN JAVASCRIPT LOGIC -->
     <script>
+        /* ==========================================================================
+           1. DATA DEFINITIONS & DINOSAUR ROSTER (14 SPECIES)
+           ========================================================================== */
         const DINOSAURS = [
             {
                 id: 'tyrannosaurus',
@@ -424,6 +496,7 @@
                 baseHp: 120,
                 baseHunger: 90,
                 baseEnergy: 85,
+                color: '#ef4444',
                 desc: '백악기 말 북아메리카를 호령한 최상위 포식자. 강력한 턱 악력을 자랑합니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M20 70 Q30 40 50 45 Q70 30 85 35 Q90 40 85 50 Q70 50 65 60 Q70 75 75 85 L65 85 Q60 70 50 65 L45 85 L35 85 Q40 70 30 70 Z" fill="#ef4444"/><circle cx="75" cy="38" r="3" fill="#ffffff"/><path d="M80 48 L70 48" stroke="#ffffff" stroke-width="2"/></svg>`
             },
@@ -438,6 +511,7 @@
                 baseHp: 130,
                 baseHunger: 100,
                 baseEnergy: 75,
+                color: '#f59e0b',
                 desc: '세 개의 뿔과 거대한 프릴로 포식자의 공격을 완벽히 방어했던 초식공룡입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 75 Q25 45 50 50 Q65 35 80 45 L85 65 Q70 70 60 65 L55 85 L45 85 Q48 70 35 70 L25 85 L15 85 Z" fill="#f59e0b"/><polygon points="75,40 90,30 78,48" fill="#e2e8f0"/><polygon points="68,38 78,20 72,42" fill="#e2e8f0"/></svg>`
             },
@@ -452,7 +526,8 @@
                 baseHp: 75,
                 baseHunger: 80,
                 baseEnergy: 110,
-                desc: '날렵한 신체와 뒤짓는 갈고리톱을 갖춘 지능적인 집단 사냥꾼입니다.',
+                color: '#10b981',
+                desc: '날렵한 신체와 뒤짓는 갈고리톱 날톱톱톱톱을 갖춘 지능적인 집단 사냥꾼입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M10 65 Q30 50 50 45 Q70 25 85 30 Q90 35 80 45 Q65 50 55 60 L60 80 L50 80 Q48 68 35 65 L25 80 L15 80 Z" fill="#10b981"/><circle cx="78" cy="33" r="2" fill="#ffffff"/></svg>`
             },
             {
@@ -466,6 +541,7 @@
                 baseHp: 180,
                 baseHunger: 120,
                 baseEnergy: 60,
+                color: '#06b6d4',
                 desc: '높은 침엽수 잎을 먹기 위해 거대한 긴 목을 지닌 쥐라기의 초거대 용각류입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M10 75 Q20 60 35 60 Q45 20 50 10 Q55 10 58 20 Q55 55 70 60 L80 60 L80 85 L70 85 Q68 72 52 72 L48 85 L38 85 Z" fill="#06b6d4"/></svg>`
             },
@@ -480,6 +556,7 @@
                 baseHp: 125,
                 baseHunger: 95,
                 baseEnergy: 90,
+                color: '#8b5cf6',
                 desc: '등 뒤의 거대한 돛과 수중 사냥에 특화된 반수생 대형 육식공룡입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M30 45 Q50 15 70 45 Z" fill="#a7f3d0"/><path d="M15 70 Q30 45 50 45 Q70 30 88 38 Q90 45 80 55 Q65 55 60 65 L65 85 L55 85 Q52 70 40 70 L30 85 L20 85 Z" fill="#8b5cf6"/></svg>`
             },
@@ -494,7 +571,8 @@
                 baseHp: 115,
                 baseHunger: 95,
                 baseEnergy: 70,
-                desc: '등에 우뚝 선 골판과 꼬리 끝의 날카로운 가시 골침을 지녔습니다.',
+                color: '#ec4899',
+                desc: '등에 우뚝 선 골판과 꼬리 끝의 날카로운 가시 골침(Thagomizer)을 지녔습니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><polygon points="30,45 35,30 42,45" fill="#f472b6"/><polygon points="45,42 52,22 60,42" fill="#f472b6"/><polygon points="62,45 70,30 75,48" fill="#f472b6"/><path d="M15 75 Q30 50 55 50 Q75 45 88 55 Q75 65 60 65 L55 85 L45 85 L42 68 L28 85 L18 85 Z" fill="#ec4899"/></svg>`
             },
             {
@@ -508,7 +586,8 @@
                 baseHp: 140,
                 baseHunger: 90,
                 baseEnergy: 65,
-                desc: '온몸이 단단한 갑옷과 꼬리 곤봉으로 무장한 걸어다니는 요새입니다.',
+                color: '#64748b',
+                desc: '온몸이 든든한 단단한 갑옷과 꼬리 곤봉으로 무장한 걸어다니는 요새입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 70 Q25 40 55 42 Q75 45 85 58 Q70 68 55 68 L50 82 L40 82 Q38 68 28 68 L20 82 L12 82 Z" fill="#64748b"/><circle cx="10" cy="70" r="5" fill="#94a3b8"/></svg>`
             },
             {
@@ -522,6 +601,7 @@
                 baseHp: 110,
                 baseHunger: 85,
                 baseEnergy: 95,
+                color: '#f97316',
                 desc: '쥐라기 생태계의 잔혹한 최상위 수각류 포식자입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M20 70 Q35 42 55 45 Q72 32 85 38 Q88 45 80 52 Q68 55 60 62 L65 82 L55 82 Q50 68 38 68 L28 82 L18 82 Z" fill="#f97316"/></svg>`
             },
@@ -536,6 +616,7 @@
                 baseHp: 100,
                 baseHunger: 85,
                 baseEnergy: 80,
+                color: '#14b8a6',
                 desc: '머리 뒤로 길게 뻗은 뼛속 관을 통해 울려퍼지는 공명 소리로 무리와 소통합니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M80 25 C65 20 75 38 75 38" stroke="#14b8a6" stroke-width="4" fill="none"/><path d="M15 72 Q30 50 52 50 Q68 38 78 45 Q70 62 58 64 L52 82 L42 82 L38 66 L25 82 L15 82 Z" fill="#14b8a6"/></svg>`
             },
@@ -550,6 +631,7 @@
                 baseHp: 160,
                 baseHunger: 110,
                 baseEnergy: 65,
+                color: '#84cc16',
                 desc: '긴 채찍 같은 꼬리와 기다란 체구를 지닌 쥐라기의 대표 초식공룡입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M5 65 Q25 65 40 58 Q55 35 70 30 Q75 30 72 38 Q58 48 55 60 L75 60 L75 80 L65 80 L60 72 L45 72 L40 80 L30 80 Z" fill="#84cc16"/></svg>`
             },
@@ -564,6 +646,7 @@
                 baseHp: 80,
                 baseHunger: 75,
                 baseEnergy: 85,
+                color: '#eab308',
                 desc: '소형 각룡류로 사막과 건조 지역에서 무리를 지어 생존했던 공룡입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M20 70 Q30 52 50 52 Q65 42 75 50 Q68 65 58 65 L52 80 L42 80 L38 68 L28 80 L18 80 Z" fill="#eab308"/></svg>`
             },
@@ -578,6 +661,7 @@
                 baseHp: 65,
                 baseHunger: 70,
                 baseEnergy: 120,
+                color: '#a855f7',
                 desc: '트라이아스기 말기에 활약한 날렵하고 재빠른 초기 민첩형 수각류 공룡입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M10 65 Q25 50 45 48 Q65 30 80 35 Q75 48 60 52 L62 75 L52 75 L48 58 L32 75 L22 75 Z" fill="#a855f7"/></svg>`
             },
@@ -592,6 +676,7 @@
                 baseHp: 95,
                 baseHunger: 85,
                 baseEnergy: 80,
+                color: '#10b981',
                 desc: '트라이아스기 대지를 누빈 초기 두 발/네 발 겸용 대형 원용각류 초식공룡입니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 72 Q30 55 48 52 Q62 30 75 32 Q70 50 58 58 L54 78 L44 78 L40 64 L28 78 L18 78 Z" fill="#10b981"/></svg>`
             },
@@ -606,52 +691,78 @@
                 baseHp: 55,
                 baseHunger: 65,
                 baseEnergy: 125,
+                color: '#3b82f6',
                 desc: '화려한 깃털을 지닌 소형 수각류로 깃털 공룡과 조류의 진화적 다리 역할을 합니다.',
                 svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><path d="M15 65 Q30 45 50 45 Q68 28 80 32 Q72 45 58 52 L58 72 L48 72 L44 58 L30 72 L20 72 Z" fill="#3b82f6"/><path d="M50 45 Q30 35 20 40" stroke="#bfdbfe" stroke-width="3"/></svg>`
             }
         ];
 
+        /* Event Database for Iterative Turn Progression */
         const EVENTS_DB = [
             {
                 title: '대형 포식자의 습격',
                 desc: '울창한 숲 그늘 속에서 굶주린 최상위 포식자가 당신을 노리고 다가옵니다.',
                 choices: [
-                    { text: '🏃 맹렬히 도망친다', type: 'flee', successRate: 0.75, msgWin: '신속하게 무성한 수풀 속으로 도망쳐 목숨을 건졌습니다.', msgLoss: '도망치던 중 웅덩이에 발이 걸려 상처를 입었습니다.' },
-                    { text: '⚔️ 당당히 맞서 싸운다', type: 'fight', successRate: 0.45, msgWin: '강렬한 반격으로 포식자에게 큰 타격을 주고 격퇴했습니다!', msgLoss: '포식자의 공격을 받아 중상을 입었습니다.' },
-                    { text: '🍃 은밀하게 수풀에 숨는다', type: 'hide', successRate: 0.85, msgWin: '숨을 죽이고 긴장 속에 포식자가 지나가길 기다렸습니다.', msgLoss: '들키고 말아 황급히 도망쳤습니다.' }
+                    { text: '🏃 맹렬히 도망친다', type: 'flee', hp: -10, energy: -20, successRate: 0.75, msgWin: '신속하게 무성한 수풀 속으로 도망쳐 목숨을 건졌습니다.', msgLoss: '도망치던 중 웅덩이에 발이 걸려 심각한 상처를 입었습니다.' },
+                    { text: '⚔️ 당당히 맞서 싸운다', type: 'fight', hp: -35, energy: -30, successRate: 0.45, msgWin: '강렬한 반격으로 포식자에게 큰 타격을 주고 격퇴했습니다!', msgLoss: '포식자의 치명적인 공격을 받아 중상을 입었습니다.' },
+                    { text: '🍃 은밀하게 수풀에 숨는다', type: 'hide', hp: 0, energy: -10, successRate: 0.85, msgWin: '숨을 죽이고 긴장 속에 포식자가 지나가길 기다렸습니다.', msgLoss: '들키고 말아 황급히 도망치며 기력을 크게 소모했습니다.' }
                 ]
             },
             {
                 title: '극심한 중생대 가뭄',
                 desc: '비가 수개월째 내리지 않아 강줄기가 마르고 식수가 고갈되어 갑니다.',
                 choices: [
-                    { text: '🌊 먼 오아시스를 찾아 이동한다', type: 'move', successRate: 0.8, msgWin: '험난한 여정 끝에 오아시스를 발견했습니다.', msgLoss: '뜨거운 태양 아래 지쳐 체력이 감소했습니다.' },
-                    { text: '🌵 뿌리와 말라붙은 줄기로 견딘다', type: 'endure', successRate: 0.9, msgWin: '최소한의 에너지 소비로 가뭄을 버텨냈습니다.', msgLoss: '영양 부족으로 몸이 약해졌습니다.' }
+                    { text: '🌊 먼 오아시스를 찾아 이동한다', type: 'move', hunger: -15, energy: -25, successRate: 0.8, msgWin: '험난한 여정 끝에 수풀이 남아있는 오아시스를 발견했습니다.', msgLoss: '뜨거운 태양 아래 지쳐 체력이 급격히 감소했습니다.' },
+                    { text: '🌵 뿌리와 말라붙은 줄기로 견딘다', type: 'endure', hunger: -30, energy: -5, successRate: 0.9, msgWin: '최소한의 에너지 소비로 가뭄의 고비를 버텨냈습니다.', msgLoss: '영양 부족으로 몸이 크게 약해졌습니다.' }
+                ]
+            },
+            {
+                title: '동종 무리와의 조우',
+                desc: '지나가던 같은 공룡 무리가 당신을 바라보며 신호를 보냅니다.',
+                choices: [
+                    { text: '🤝 무리에 합류하여 동행한다', type: 'join', status: '유대', successRate: 0.85, msgWin: '무리의 보호를 받으며 안전하게 영토를 공유하게 되었습니다.', msgLoss: '무리 내부 서열 싸움에서 밀려 약간의 상처를 입었습니다.' },
+                    { text: '🐾 독고다이 단독 생활을 고수한다', type: 'solo', energy: +10, successRate: 1.0, msgWin: '나만의 방식을 유지하며 자율적으로 영역을 탐색합니다.' }
+                ]
+            },
+            {
+                title: '화산 폭발과 잿가루 폭풍',
+                desc: '인근 화산이 폭발하며 암석과 화산재가 대기를 뒤덮습니다.',
+                choices: [
+                    { text: '⛰️ 안전한 동굴 깊숙이 피신한다', type: 'cave', energy: -15, successRate: 0.85, msgWin: '동굴 속에서 낙하물과 연기를 피했습니다.', msgLoss: '동굴 입구가 일부 무너져 탈출하며 체력을 소모했습니다.' },
+                    { text: '🏃‍♂️ 바람 반대 방향으로 질주한다', type: 'run', hp: -20, energy: -30, successRate: 0.65, msgWin: '낙신을 피해 안전한 평야 지대로 빠져나왔습니다.', msgLoss: '유독 가스를 마셔 체력이 급격히 저하되었습니다.' }
                 ]
             }
         ];
 
+        /* ==========================================================================
+           2. GAME STATE MANAGEMENT
+           ========================================================================== */
         let gameState = {
             currentDino: null,
             age: 0,
             hp: 100,
             hunger: 80,
             energy: 90,
-            focus: 'forage',
-            statusTags: [],
+            focus: 'forage', // forage, vigilant, rest
+            statusTags: [], // ['부상', '유대', '지도자']
             unlockedDex: JSON.parse(localStorage.getItem('dino_dex_unlocked') || '[]'),
             history: JSON.parse(localStorage.getItem('dino_history') || '[]')
         };
 
+        /* Initialize UI on Page Load */
         window.onload = function() {
             renderDex();
             renderHistory();
         };
 
+        /* ==========================================================================
+           3. NAVIGATION & TAB SWITCHING
+           ========================================================================== */
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
 
+            // Nav Button Styling Reset
             ['rebirth', 'guide', 'dex', 'history'].forEach(id => {
                 const btn = document.getElementById(`nav-${id}`);
                 if (id === tabId) {
@@ -662,22 +773,47 @@
             });
         }
 
+        /* ==========================================================================
+           4. REBIRTH SIMULATION ENGINE
+           ========================================================================== */
         function startRebirth() {
+            // Determine Spawn Probability Mode
             const mode = document.querySelector('input[name="spawnMode"]:checked').value;
-            let selectedDino = mode === 'equal' ? DINOSAURS[Math.floor(Math.random() * DINOSAURS.length)] : DINOSAURS[0];
-            
+            let selectedDino;
+
+            if (mode === 'equal') {
+                selectedDino = DINOSAURS[Math.floor(Math.random() * DINOSAURS.length)];
+            } else {
+                // Population Weighted Selection
+                const totalWeight = DINOSAURS.reduce((sum, d) => sum + d.popWeight, 0);
+                let rand = Math.random() * totalWeight;
+                for (let d of DINOSAURS) {
+                    if (rand < d.popWeight) {
+                        selectedDino = d;
+                        break;
+                    }
+                    rand -= d.popWeight;
+                }
+            }
+            if (!selectedDino) selectedDino = DINOSAURS[0];
+
+            // Setup Dino State
             gameState.currentDino = selectedDino;
             gameState.age = 0;
             gameState.hp = selectedDino.baseHp;
             gameState.hunger = selectedDino.baseHunger;
             gameState.energy = selectedDino.baseEnergy;
             gameState.statusTags = [];
+            gameState.focus = 'forage';
 
+            // Unlock Dex
             if (!gameState.unlockedDex.includes(selectedDino.id)) {
                 gameState.unlockedDex.push(selectedDino.id);
                 localStorage.setItem('dino_dex_unlocked', JSON.stringify(gameState.unlockedDex));
+                showToast(`🎉 새로운 공룡 [${selectedDino.name}] 도감 등록!`);
             }
 
+            // Update UI Elements
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('result-screen').classList.add('hidden');
             document.getElementById('game-screen').classList.remove('hidden');
@@ -688,70 +824,293 @@
             document.getElementById('dino-diet-badge').textContent = selectedDino.diet;
             document.getElementById('dino-svg-container').innerHTML = selectedDino.svg;
 
+            document.getElementById('chronicle-log').innerHTML = `
+                <div class="p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-800/50 text-emerald-300">
+                    🥚 알을 깨고 중생대 대지 위에 [${selectedDino.name}]으로 태어났습니다.
+                </div>
+            `;
+
             updateStatsDisplay();
             nextTurnEvent();
         }
 
+        /* Update Stats Bars & Tags */
         function updateStatsDisplay() {
             const dino = gameState.currentDino;
             document.getElementById('dino-age-display').textContent = `${gameState.age} 세`;
-            document.getElementById('bar-hp').style.width = `${(gameState.hp / dino.baseHp) * 100}%`;
+
+            // HP Bar
+            const hpPct = Math.max(0, Math.min(100, (gameState.hp / dino.baseHp) * 100));
+            document.getElementById('bar-hp').style.width = `${hpPct}%`;
             document.getElementById('val-hp').textContent = `${Math.round(gameState.hp)}/${dino.baseHp}`;
-            document.getElementById('bar-hunger').style.width = `${(gameState.hunger / dino.baseHunger) * 100}%`;
-            document.getElementById('bar-energy').style.width = `${(gameState.energy / dino.baseEnergy) * 100}%`;
+
+            // Hunger Bar
+            const hungerPct = Math.max(0, Math.min(100, (gameState.hunger / dino.baseHunger) * 100));
+            document.getElementById('bar-hunger').style.width = `${hungerPct}%`;
+            document.getElementById('val-hunger').textContent = `${Math.round(gameState.hunger)}/${dino.baseHunger}`;
+
+            // Energy Bar
+            const energyPct = Math.max(0, Math.min(100, (gameState.energy / dino.baseEnergy) * 100));
+            document.getElementById('bar-energy').style.width = `${energyPct}%`;
+            document.getElementById('val-energy').textContent = `${Math.round(gameState.energy)}/${dino.baseEnergy}`;
+
+            // Status Tags Container
+            const tagsBox = document.getElementById('status-tags-container');
+            if (gameState.statusTags.length === 0) {
+                tagsBox.innerHTML = `<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400 text-[11px]">특이사항 없음</span>`;
+            } else {
+                tagsBox.innerHTML = gameState.statusTags.map(t => `<span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-bold text-[11px]">${t}</span>`).join('');
+            }
         }
 
+        /* Life Focus Selection */
         function setLifeFocus(mode) {
             gameState.focus = mode;
+            ['forage', 'vigilant', 'rest'].forEach(f => {
+                const btn = document.getElementById(`focus-${f}`);
+                if (f === mode) {
+                    btn.className = "focus-btn p-2 rounded-lg border text-xs font-bold text-center transition-all bg-emerald-950/80 border-emerald-500 text-emerald-300";
+                } else {
+                    btn.className = "focus-btn p-2 rounded-lg border text-xs font-bold text-center transition-all bg-slate-900 border-slate-700 text-slate-400 hover:text-slate-200";
+                }
+            });
         }
 
+        /* Event Progression Engine */
         function nextTurnEvent() {
-            if (gameState.hp <= 0 || gameState.age >= gameState.currentDino.maxAge) {
-                triggerGameOver('생존 종료');
+            // Check Death Conditions
+            if (gameState.hp <= 0 || gameState.hunger <= 0) {
+                triggerGameOver('체력 및 에너지 고갈');
                 return;
             }
+            if (gameState.age >= gameState.currentDino.maxAge) {
+                triggerGameOver('수명 다함 (자연사)');
+                return;
+            }
+
+            // Pick Event
             const ev = EVENTS_DB[Math.floor(Math.random() * EVENTS_DB.length)];
             document.getElementById('event-title').textContent = ev.title;
             document.getElementById('event-desc').textContent = ev.desc;
-            
+            document.getElementById('event-year-tag').textContent = `생존 ${gameState.age + 1}년차`;
+
             const choicesContainer = document.getElementById('event-choices-container');
             choicesContainer.innerHTML = '';
-            ev.choices.forEach(choice => {
+
+            ev.choices.forEach((choice) => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left p-3 rounded-xl bg-mesozoic-900 hover:bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200";
-                btn.textContent = choice.text;
+                btn.className = "w-full text-left p-3 rounded-xl bg-mesozoic-900 hover:bg-slate-800 border border-slate-700/80 transition-all text-xs font-semibold text-slate-200 flex justify-between items-center group";
+                btn.innerHTML = `
+                    <span>${choice.text}</span>
+                    <i class="fa-solid fa-chevron-right text-slate-500 group-hover:text-emerald-400 transition-all"></i>
+                `;
                 btn.onclick = () => resolveChoice(choice);
                 choicesContainer.appendChild(btn);
             });
         }
 
+        /* Resolve Event Choice */
         function resolveChoice(choice) {
-            gameState.age++;
-            gameState.hp -= 10;
+            gameState.age += 1;
+
+            // Apply Life Focus Effects
+            if (gameState.focus === 'forage') {
+                gameState.hunger = Math.min(gameState.currentDino.baseHunger, gameState.hunger + 15);
+            } else if (gameState.focus === 'vigilant') {
+                gameState.energy = Math.max(0, gameState.energy - 10);
+            } else if (gameState.focus === 'rest') {
+                gameState.hp = Math.min(gameState.currentDino.baseHp, gameState.hp + 15);
+                gameState.energy = Math.min(gameState.currentDino.baseEnergy, gameState.energy + 20);
+            }
+
+            // Calculate Roll Success
+            let successRate = choice.successRate || 0.7;
+            if (gameState.focus === 'vigilant') successRate += 0.15;
+            if (gameState.statusTags.includes('부상')) successRate -= 0.2;
+
+            const isSuccess = Math.random() < successRate;
+
+            let logMsg = `[${gameState.age}세] `;
+            if (isSuccess) {
+                logMsg += choice.msgWin || '성공적으로 극복했습니다.';
+                if (choice.status && !gameState.statusTags.includes(choice.status)) {
+                    gameState.statusTags.push(choice.status);
+                }
+            } else {
+                logMsg += choice.msgLoss || '위기 극복에 실패하였습니다.';
+                gameState.hp -= 20;
+                if (!gameState.statusTags.includes('부상')) {
+                    gameState.statusTags.push('부상');
+                }
+            }
+
+            // Hunger decay
+            gameState.hunger -= 10;
+
+            // Add Log
+            const logBox = document.getElementById('chronicle-log');
+            const logItem = document.createElement('div');
+            logItem.className = `p-2.5 rounded-lg text-xs ${isSuccess ? 'bg-slate-900 border border-slate-800 text-slate-300' : 'bg-rose-950/30 border border-rose-900/50 text-rose-300'}`;
+            logItem.textContent = logMsg;
+            logBox.insertBefore(logItem, logBox.firstChild);
+
             updateStatsDisplay();
             nextTurnEvent();
         }
 
+        /* Game Over & Record Saving */
         function triggerGameOver(reason) {
+            const dino = gameState.currentDino;
             document.getElementById('game-screen').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
+
+            document.getElementById('result-cause').textContent = `${reason} 사망`;
+            document.getElementById('result-summary-text').textContent = `당신은 ${dino.era} 대지 위에서 ${dino.name}(으)로 총 ${gameState.age}년 동안 야생의 삶을 살았습니다.`;
+
+            // Card Preview Setup
+            document.getElementById('card-era').textContent = dino.era;
+            document.getElementById('card-dino-name').textContent = dino.name;
+            document.getElementById('card-life-span').textContent = `최종 수명: ${gameState.age}세`;
+            document.getElementById('card-diet').textContent = `식성: ${dino.diet}`;
+            document.getElementById('card-svg-container').innerHTML = dino.svg;
+
+            let achievement = '중생대의 방랑자';
+            if (gameState.age >= dino.maxAge) achievement = '백악기의 전설 (자연사)';
+            else if (gameState.age > 15) achievement = '베테랑 야생 생존자';
+
+            document.getElementById('card-achievement').textContent = achievement;
+            document.getElementById('card-desc').textContent = `${dino.desc} 가혹한 야생 속에서 ${gameState.age}년간 당당히 자리를 지켰습니다.`;
+
+            // Save Record
+            const record = {
+                dinoName: dino.name,
+                era: dino.era,
+                age: gameState.age,
+                reason: reason,
+                date: new Date().toLocaleDateString()
+            };
+            gameState.history.unshift(record);
+            localStorage.setItem('dino_history', JSON.stringify(gameState.history));
+            renderHistory();
+            renderDex();
         }
 
+        /* ==========================================================================
+           5. SHARING & WEB API INTEGRATIONS
+           ========================================================================== */
+        function getShareSummaryText() {
+            const dino = gameState.currentDino;
+            const userNote = document.getElementById('card-user-note').value || '공룡환생소에서 환생 완료!';
+            return `🦕 [공룡환생소 생존 증서]\n공룡: ${dino.name} (${dino.era})\n최종 수명: ${gameState.age}세\n메모: "${userNote}"\n\n당신의 다음 생은 어떤 공룡일까요? 지금 테스트해보세요!`;
+        }
+
+        async function shareResultWebAPI() {
+            const shareData = {
+                title: '공룡환생소 - 결과 증서',
+                text: getShareSummaryText(),
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                    showToast('성공적으로 공유되었습니다!');
+                } catch (err) {
+                    copyResultText();
+                }
+            } else {
+                copyResultText();
+            }
+        }
+
+        function copyResultText() {
+            const text = getShareSummaryText();
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast('📋 생존 요약이 클립보드에 복사되었습니다!');
+        }
+
+        /* ==========================================================================
+           6. DEX & HISTORY RENDERING
+           ========================================================================== */
         function renderDex() {
             const container = document.getElementById('dex-grid');
             container.innerHTML = '';
+
+            const unlockedCount = gameState.unlockedDex.length;
+            const pct = Math.round((unlockedCount / DINOSAURS.length) * 100);
+            document.getElementById('dex-progress').textContent = `해금률: ${unlockedCount} / ${DINOSAURS.length} (${pct}%)`;
+
             DINOSAURS.forEach(dino => {
+                const isUnlocked = gameState.unlockedDex.includes(dino.id);
                 const card = document.createElement('div');
-                card.className = "p-4 rounded-xl border bg-mesozoic-800 border-slate-700";
-                card.innerHTML = `<h4 class="font-bold text-white">${dino.name}</h4><p class="text-xs text-slate-400">${dino.desc}</p>`;
+                card.className = `p-4 rounded-xl border transition-all ${isUnlocked ? 'bg-mesozoic-800 border-slate-700' : 'bg-mesozoic-900/60 border-slate-800 opacity-60'}`;
+                
+                card.innerHTML = `
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-14 h-14 bg-mesozoic-900 border border-slate-700 rounded-lg p-1 flex items-center justify-center">
+                            ${isUnlocked ? dino.svg : '<i class="fa-solid fa-lock text-slate-600 text-xl"></i>'}
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">${isUnlocked ? dino.name : '???'}</h4>
+                            <p class="text-[10px] text-slate-400 italic">${isUnlocked ? dino.scientific : '미해금 상태'}</p>
+                            <span class="inline-block mt-1 text-[9px] font-bold px-2 py-0.2 rounded ${isUnlocked ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' : 'bg-slate-800 text-slate-500'}">${dino.era}</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400">${isUnlocked ? dino.desc : '환생을 통해 알에서 깨어나 유전자를 해금하세요.'}</p>
+                `;
                 container.appendChild(card);
             });
         }
 
-        function renderHistory() {}
-        function clearHistory() {}
-        function copyResultText() {}
-        function shareResultWebAPI() {}
+        function renderHistory() {
+            const container = document.getElementById('history-container');
+            container.innerHTML = '';
+
+            if (gameState.history.length === 0) {
+                container.innerHTML = `<div class="p-6 text-center text-xs text-slate-500 bg-mesozoic-800 rounded-xl">아직 기록된 환생 이력이 없습니다.</div>`;
+                return;
+            }
+
+            gameState.history.forEach((rec) => {
+                const item = document.createElement('div');
+                item.className = "bg-mesozoic-800/80 border border-slate-700/80 p-4 rounded-xl flex items-center justify-between text-xs";
+                item.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🦕</span>
+                        <div>
+                            <h4 class="font-bold text-slate-200 text-sm">${rec.dinoName} <span class="text-[10px] text-slate-400">(${rec.era})</span></h4>
+                            <p class="text-slate-400">최종 수명: <span class="text-emerald-400 font-bold">${rec.age}세</span> (${rec.reason})</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] text-slate-500">${rec.date}</span>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function clearHistory() {
+            if (confirm('모든 환생 기록을 삭제하시겠습니까?')) {
+                gameState.history = [];
+                localStorage.removeItem('dino_history');
+                renderHistory();
+                showToast('기록이 초기화되었습니다.');
+            }
+        }
+
+        /* Toast Helper */
+        function showToast(msg) {
+            const toast = document.getElementById('toast-modal');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
     </script>
 </body>
 </html>
