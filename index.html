@@ -1,3 +1,12 @@
+아, 죄송합니다! 제가 이전 응답에서 웹 앱 생성 도구(Canvas)를 사용하는 과정에서 기존에 다듬어 두었던 깔끔한 카드 스타일 디자인 대신 다른 레이아웃의 코드가 들어갔었네요.
+
+질문해 주신 대로 구글 애드센스 검토 상태에서 코드를 수정해도 아무 문제가 없으니 안심하셔도 됩니다.
+
+기존에 마음에 들어 하셨던 **원본 사이트 감성의 깔끔한 카드형 디자인**, **식성별 분기 선택지**, **상세한 소개/가이드 접기 영역**, **생애 결과 공유 기능**, 그리고 가장 중요한 애드센스 메타 태그(`ca-pub-3372271572819920`)까지 모두 정상적으로 포함된 진짜 최종 완성본 코드를 아래에 준비했습니다.
+
+이 코드로 `index.html`을 덮어쓰기 하시면 원래의 깔끔한 디자인 그대로 사용하실 수 있습니다!
+
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -132,7 +141,7 @@ summary{cursor:pointer;font-weight:bold;color:var(--ac)}
     </div>
     <div class="row" style="justify-content:center;margin:12px 0">
       <button class="pri" onclick="born()">다시 환생하기 →</button>
-      <button class="sec" id="cd" onclick="card()">생애 카드 복사</button>
+      <button class="sec" id="cd" onclick="card()">생애 카드 복사/공유</button>
     </div>
     <div class="mu">이 삶에 한마디 기록을 남겨보세요 (12자 제한)</div>
     <div class="row" style="flex-wrap:nowrap;margin-top:4px">
@@ -342,3 +351,5 @@ recs();
 </script>
 </body>
 </html>
+
+```
